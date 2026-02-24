@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapeamento de Cenários de Teste - Ambiente Local/Mock</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { background-color: #212529; color: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .container { max-width: 1200px; }
+        h1, h2 { color: #17a2b8; border-bottom: 1px solid #495057; padding-bottom: 10px; margin-top: 40px;}
+        h1 { font-size: 2.5rem; text-align: center; margin-bottom: 40px;}
+        h2 { font-size: 2rem; }
+        .table-responsive { margin-top: 20px; }
+        table { background-color: #343a40; }
+        th { background-color: #495057 !important; color: #f8f9fa !important; }
+        td { vertical-align: middle !important; }
+        .badge { font-size: 90%; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1>Mapeamento de Cenários de Teste - Ambiente Local/Mock</h1>
+
+        <!-- Grupo: Validação de Documentos -->
+        <h2>Grupo: Validação de Documentos (<code>DocumentValidationTests.feature</code>)</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cenário</th>
+                        <th>Método</th>
+                        <th>Finalidade</th>
+                        <th>Steps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1/22</td>
+                        <td>Validar CNPJ com caracteres alfanuméricos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Verifica se o serviço aceita um CNPJ com formato alfanumérico válido.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>Z7NNC4PE/9520-06</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> com a mensagem "Documento com formato válido".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2/22</td>
+                        <td>Validar CNPJ com menos de 14 dígitos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CNPJs com tamanho incorreto (menor).</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123A56780001</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CNPJ inválido: quantidade de dígitos incorreta".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3/22</td>
+                        <td>Validar CNPJ com mais de 14 dígitos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CNPJs com tamanho incorreto (maior).</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123A56789000123</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CNPJ inválido: quantidade de dígitos incorreta".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4/22</td>
+                        <td>Validar CNPJ com caracteres não alfanuméricos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CNPJs que contêm caracteres especiais inválidos.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>12A45#78/@001-9@</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CNPJ inválido: caracteres especiais não permitidos".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5/22</td>
+                        <td>Validar CPF Com sucesso</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Verifica se o serviço aceita um CPF com formato numérico válido.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123.456.789-00</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> com a mensagem "Documento com formato válido".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6/22</td>
+                        <td>Validar CPF com menos de 11 dígitos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CPFs com tamanho incorreto (menor).</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123.456.789-0</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CPF inválido: quantidade de dígitos incorreta".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7/22</td>
+                        <td>Validar CPF com mais de 11 dígitos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CPFs com tamanho incorreto (maior).</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123.456.789-000</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CPF inválido: quantidade de dígitos incorreta".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8/22</td>
+                        <td>Validar CPF com caracteres não numéricos</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Garante que o serviço rejeita CPFs que contêm caracteres especiais inválidos.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>123.456.789-@@</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CPF inválido: caracteres especiais não permitidos".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9/22</td>
+                        <td>Validar CNPJ Alfanumérico com dígito verificador válido</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Testa o "Módulo de Inteligência", garantindo que ele aprova um CNPJ alfanumérico com dígito verificador matematicamente correto (de acordo com a regra customizada).</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>Q3NUDAUL/IL76-09</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> com a mensagem "Documento com formato válido".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10/22</td>
+                        <td>Validar CNPJ Alfanumérico com dígito verificador inválido</td>
+                        <td><span class="badge badge-info">POST</span></td>
+                        <td><strong>Consulta (Validação)</strong> - Testa o "Módulo de Inteligência", garantindo que ele rejeita um CNPJ alfanumérico com dígito verificador matematicamente incorreto.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> um documento <code>Q3NUDAUL/IL76-00</code> é preparado.</li>
+                                <li><strong>When:</strong> uma requisição de validação <code>POST</code> é enviada.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>400 Bad Request</code> com a mensagem "CNPJ inválido: dígito verificador não confere".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Grupo: Fluxos de Negócio Principais -->
+        <h2>Grupo: Fluxos de Negócio Principais (<code>MainBusinessFlows.feature</code>)</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cenário</th>
+                        <th>Método</th>
+                        <th>Finalidade</th>
+                        <th>Steps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>11/22</td>
+                        <td>Criação de um novo cliente válido</td>
+                        <td><span class="badge badge-success">POST</span></td>
+                        <td><strong>Criação</strong> - Testa o fluxo básico de criação de um novo cliente com dados estáticos.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>CRIAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>POST</code> é enviada para <code>/v1/clientes</code> com a chave <code>NOVO_CLIENTE_VALIDO</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>201 Created</code> com a mensagem "Cliente criado com sucesso".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12/22</td>
+                        <td>Busca de um cliente existente</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta</strong> - Testa a busca de um cliente pré-existente (<code>id=1</code>) pelo seu ID.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/1</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> e o corpo deve conter o nome "João Silva".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13/22</td>
+                        <td>Alteração de um cliente existente</td>
+                        <td><span class="badge badge-warning">PUT</span></td>
+                        <td><strong>Alteração</strong> - Testa a atualização de um cliente pré-existente.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>ALTERAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>PUT</code> é enviada para <code>/v1/clientes/1</code> com a chave <code>ATUALIZACAO_NOME_VALIDA</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> com a mensagem "Cliente atualizado".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14/22</td>
+                        <td>Deleção de um cliente existente</td>
+                        <td><span class="badge badge-danger">DELETE</span></td>
+                        <td><strong>Delete</strong> - Testa a exclusão de um cliente pré-existente.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>DELETAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>DELETE</code> é enviada para <code>/v1/clientes/1</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>204 No Content</code>.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15/22</td>
+                        <td>Busca de um cliente que foi deletado</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta (Validação de Erro)</strong> - Garante que um cliente, após ser deletado, não pode mais ser encontrado.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_DELETADO</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/1</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>404 Not Found</code> com a mensagem "Cliente não encontrado".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>16/22</td>
+                        <td>Criação de cliente com CPF preenchido com zeros</td>
+                        <td><span class="badge badge-success">POST</span></td>
+                        <td><strong>Criação (Geração de Massa)</strong> - Testa a "Fábrica de Dados", validando a regra de completar um CPF com zeros à esquerda.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>CRIAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>POST</code> é enviada para <code>/v1/clientes</code> com a chave <code>CPF_9_DIGITOS</code> e a regra <code>COMPLETAR_CPF_COM_ZEROS</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>201 Created</code>.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17/22</td>
+                        <td>Criação de cliente com CNPJ numérico preenchido com zeros</td>
+                        <td><span class="badge badge-success">POST</span></td>
+                        <td><strong>Criação (Geração de Massa)</strong> - Testa a "Fábrica de Dados", validando a regra de completar um CNPJ numérico com zeros à esquerda.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>CRIAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>POST</code> é enviada para <code>/v1/clientes</code> com a chave <code>CNPJ_12_DIGITOS</code> e a regra <code>COMPLETAR_CNPJ_COM_ZEROS</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>201 Created</code>.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>18/22</td>
+                        <td>Criação de cliente com CNPJ Alfanumérico preenchido com zeros</td>
+                        <td><span class="badge badge-success">POST</span></td>
+                        <td><strong>Criação (Geração de Massa)</strong> - Testa a "Fábrica de Dados", validando a regra de completar um CNPJ alfanumérico com zeros à esquerda.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>CRIAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>POST</code> é enviada para <code>/v1/clientes</code> com a chave <code>CNPJ_ALFA_10_DIGITOS</code> e a regra <code>COMPLETAR_CNPJ_ALFA_COM_ZEROS</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>201 Created</code>.</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>19/22</td>
+                        <td>Busca de cliente criado com CPF preenchido com zeros</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta (Ponta a Ponta)</strong> - Valida que um cliente criado com CPF gerado pode ser buscado.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/2</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> e o corpo deve conter o nome "Cliente CPF Auto".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>20/22</td>
+                        <td>Busca de cliente criado com CNPJ numérico preenchido com zeros</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta (Ponta a Ponta)</strong> - Valida que um cliente criado com CNPJ numérico gerado pode ser buscado.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/3</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> e o corpo deve conter o nome "Cliente CNPJ Auto".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>21/22</td>
+                        <td>Busca de cliente criado com CNPJ Alfanumérico</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta (Ponta a Ponta)</strong> - Valida que um cliente criado com CNPJ alfanumérico gerado pode ser buscado.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/4</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>200 OK</code> e o corpo deve conter o nome "Cliente CNPJ Alfa Auto".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>22/22</td>
+                        <td>Busca por cliente com ID inexistente (migrado)</td>
+                        <td><span class="badge badge-primary">GET</span></td>
+                        <td><strong>Consulta (Validação de Erro)</strong> - Garante que o sistema retorna <code>404</code> ao buscar por um ID que não existe.</td>
+                        <td>
+                            <ol>
+                                <li><strong>Given:</strong> o sistema está configurado para a ação <code>BUSCAR_CLIENTE</code>.</li>
+                                <li><strong>When:</strong> uma requisição <code>GET</code> é enviada para <code>/v1/clientes/999</code>.</li>
+                                <li><strong>Then:</strong> a resposta deve ser <code>404 Not Found</code> com a mensagem "Cliente não encontrado".</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

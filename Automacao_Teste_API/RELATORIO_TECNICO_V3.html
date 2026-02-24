@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Técnico V3 - Framework de Automação de Testes de API</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1, h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.5em; }
+        code { background-color: #ecf0f1; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #c0392b; }
+    </style>
+</head>
+<body>
+    <h1>Relatório Técnico V3 - Framework de Automação de Testes de API</h1>
+
+    <h2>1. Visão Geral</h2>
+    <p>Este documento detalha a arquitetura, tecnologias e o fluxo de trabalho do framework de automação de testes de API. O objetivo do projeto é fornecer uma estrutura robusta, estável e de fácil manutenção para validar endpoints de API, gerando evidências claras e organizadas.</p>
+
+    <h2>2. Arquitetura e Tecnologias</h2>
+    <p>O framework foi construído sobre a plataforma Java, utilizando um conjunto de tecnologias padrão de mercado para testes de API.</p>
+    <ul>
+        <li><strong>Linguagem:</strong> Java 11</li>
+        <li><strong>Gerenciador de Dependências:</strong> Apache Maven</li>
+        <li><strong>Core de Testes BDD:</strong>
+            <ul>
+                <li><strong>Cucumber (v7.15.0):</strong> Utilizado para a escrita de cenários de teste em linguagem natural (Gherkin), facilitando a comunicação entre equipes técnicas e de negócio.</li>
+                <li><strong>Gherkin:</strong> Sintaxe utilizada para escrever os arquivos <code>.feature</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Testes de API:</strong>
+            <ul>
+                <li><strong>Rest-Assured (v5.4.0):</strong> Biblioteca principal para a criação e envio de requisições HTTP e para a validação de respostas (status code, headers, body).</li>
+            </ul>
+        </li>
+        <li><strong>Mocking de Serviços:</strong>
+            <ul>
+                <li><strong>WireMock (v2.35.0):</strong> Utilizado para simular respostas de API. Isso torna os testes independentes de ambientes externos, garantindo que eles possam rodar em qualquer máquina, a qualquer momento, sem depender da disponibilidade dos serviços reais.</li>
+            </ul>
+        </li>
+        <li><strong>Motor de Execução:</strong>
+            <ul>
+                <li><strong>JUnit 5 (Jupiter):</strong> Embora presente, seu uso como executor principal (<code>RunCucumberTest</code>) foi <strong>abandonado</strong> devido a conflitos de configuração com a IDE que impediam a geração de relatórios.</li>
+                <li><strong>Cucumber CLI:</strong> A execução agora é feita diretamente através da Interface de Linha de Comando (CLI) do Cucumber, invocada programaticamente.</li>
+            </ul>
+        </li>
+        <li><strong>Geração de Relatórios:</strong>
+            <ul>
+                <li><strong><code>cucumber.json</code>:</strong> Formato de saída padrão do Cucumber, contendo os dados brutos da execução dos testes.</li>
+                <li><strong>Masterthought Cucumber Reporting (v5.7.8):</strong> Biblioteca utilizada para ler o <code>cucumber.json</code> e gerar um dashboard HTML interativo e detalhado.</li>
+            </ul>
+        </li>
+        <li><strong>Banco de Dados (Opcional):</strong>
+            <ul>
+                <li><strong>MongoDB:</strong> Utilizado em alguns cenários para armazenar e recuperar massas de dados complexas, desacoplando os dados dos scripts de teste.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>3. Estrutura do Projeto</h2>
+    <p>O projeto segue a estrutura padrão de um projeto Maven/Java.</p>
+    <ul>
+        <li><code>src/main/java</code>: Código fonte da aplicação (atualmente vazio, pois é um projeto de teste).</li>
+        <li><code>src/test/java</code>: Contém todo o código de teste.
+            <ul>
+                <li><code>br/com/eagro/api/</code>: Pacote principal.
+                    <ul>
+                        <li><code>*.java</code> (Step Definitions): Classes que contêm a implementação em Java dos passos Gherkin.</li>
+                        <li><code>TestContext.java</code>: Classe central que gerencia e compartilha o estado entre os steps de um mesmo cenário (ex: armazena a requisição e a resposta).</li>
+                        <li><code>Hooks.java</code>: Contém os "ganchos" do Cucumber (<code>@BeforeAll</code>, <code>@AfterAll</code>) para configurar e limpar o ambiente de teste (ex: iniciar/parar o WireMock).</li>
+                        <li><code>Executor.java</code>: <strong>Ponto de entrada principal e único para a execução dos testes.</strong></li>
+                        <li><code>ReportGenerator.java</code>: Classe responsável por invocar a biblioteca Masterthought para gerar o dashboard HTML.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><code>src/test/resources</code>: Contém os arquivos de configuração e de dados.
+            <ul>
+                <li><code>br/com/eagro/api/</code>: Pacote principal dos recursos.
+                    <ul>
+                        <li><code>*.feature</code>: Arquivos com os cenários de teste escritos em Gherkin.</li>
+                    </ul>
+                </li>
+                <li><code>log4j2.properties</code>: Arquivo de configuração de logs.</li>
+                <li><code>config.properties</code>: Arquivo para armazenar configurações externas (ex: senhas, URLs).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>4. Fluxo de Execução (O Caminho Correto)</h2>
+    <p>O fluxo de trabalho foi consolidado para ser simples e à prova de falhas.</p>
+    <ol>
+        <li><strong>Ponto de Entrada:</strong> A execução deve ser iniciada <strong>exclusivamente</strong> através do método <code>main</code> da classe <code>Executor.java</code>.
+            <ul>
+                <li><strong>NÃO UTILIZAR:</strong> A classe <code>RunCucumberTest.java</code> foi intencionalmente marcada como perigosa, pois sua execução via IDE causa falhas na geração de relatórios.</li>
+            </ul>
+        </li>
+        <li><strong>Execução dos Testes:</strong> O <code>Executor.java</code> invoca a CLI do Cucumber, que:
+            <ul>
+                <li>Escaneia a pasta <code>src/test/resources/br/com/eagro/api</code> em busca de todos os arquivos <code>.feature</code>.</li>
+                <li>Executa cada cenário, um por um.</li>
+                <li>Durante a execução, os <code>Hooks</code> configuram o ambiente (iniciando o WireMock) e os <code>StepDefinitions</code> executam a lógica do teste (configurando mocks, enviando requisições, validando respostas).</li>
+                <li>Ao final, o Cucumber gera o arquivo <code>target/cucumber-reports/cucumber.json</code> com os resultados.</li>
+            </ul>
+        </li>
+        <li><strong>Geração da Evidência:</strong> Após a finalização dos testes, o <code>Executor.java</code> chama o <code>ReportGenerator.generateReport()</code>, que:
+            <ul>
+                <li>Lê o arquivo <code>target/cucumber-reports/cucumber.json</code>.</li>
+                <li>Utiliza a biblioteca Masterthought para criar um dashboard HTML.</li>
+                <li>Salva o dashboard em uma nova pasta com data e hora dentro de <code>Evidencias/</code>.</li>
+            </ul>
+        </li>
+    </ol>
+    <p>Este fluxo garante que o <code>cucumber.json</code> seja completamente escrito antes que a geração do relatório seja tentada, eliminando a causa raiz de todas as falhas anteriores.</p>
+</body>
+</html>

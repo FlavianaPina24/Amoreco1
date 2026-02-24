@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo Técnico - Projeto de Automação de API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { background-color: #212529; color: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .container { max-width: 960px; }
+        h1, h2, h3, h4 { color: #17a2b8; border-bottom: 1px solid #495057; padding-bottom: 10px; margin-top: 20px;}
+        h1 { font-size: 2.5rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.25rem; }
+        .card { background-color: #343a40; border-color: #495057; margin-bottom: 20px; }
+        .card-body { padding: 1.5rem; }
+        code { color: #e83e8c; background-color: #2b2b2b; padding: .2em .4em; border-radius: 3px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="mb-4">Resumo Técnico do Projeto de Automação de API</h1>
+                <p class="lead">Este documento descreve a arquitetura, as tecnologias e as capacidades da plataforma de testes de API que desenvolvemos, desde o seu início como um "projeto zero" até a sua forma final como uma robusta ferramenta de simulação e validação.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>1. Tecnologias Utilizadas</h3>
+                <p>O projeto foi construído sobre uma base sólida de tecnologias padrão de mercado para testes em Java:</p>
+                <ul>
+                    <li><strong>Linguagem:</strong> Java 11</li>
+                    <li><strong>Framework de Testes BDD:</strong> <strong>Cucumber 7</strong>, utilizando a sintaxe <strong>Gherkin</strong> para escrever os cenários de teste em linguagem natural (<code>.feature</code> files).</li>
+                    <li><strong>Executor de Testes:</strong> <strong>JUnit 5</strong>, que serve como a "ignição" para o Cucumber.</li>
+                    <li><strong>Cliente HTTP:</strong> <strong>RestAssured 5</strong>, utilizado para fazer as chamadas de API (<code>POST</code>, <code>GET</code>, <code>PUT</code>, <code>DELETE</code>) e para validar as respostas.</li>
+                    <li><strong>Servidor de Mock:</strong> <strong>WireMock 2</strong>, a estrela do nosso ambiente de testes local. Ele nos permite simular o comportamento de APIs de backend de forma controlada.</li>
+                    <li><strong>Manipulação de JSON:</strong> <strong>Jackson (ObjectMapper)</strong>, para serializar e desserializar objetos Java de/para JSON.</li>
+                    <li><strong>Gerador de Relatórios:</strong> <strong>Masterthought Cucumber Reporting</strong>, a nossa "galeria de arte", que gera os dashboards em HTML com as evidências de cada teste.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>2. Arquitetura e Estratégia de Testes ("O Que Fizemos")</h3>
+                <p>A nossa estratégia foi a da <strong>evolução incremental e isolamento de responsabilidades</strong>. Em vez de um único bloco monolítico, nós construímos múltiplos "prédios" de teste independentes, cada um com seu propósito:</p>
+                
+                <h4>O "Caçador" (<code>LocalApiTests.feature</code>)</h4>
+                <ul>
+                    <li><strong>Propósito:</strong> Simular um serviço de <strong>busca</strong> de clientes.</li>
+                    <li><strong>Como Funciona:</strong> Usa um <code>WireMockServer</code> para interceptar chamadas a <code>/v1/cliente/dados</code>. A lógica de negócio (encontrar um usuário na <code>MassaDeDados</code> ou retornar 404) está embutida no step <code>@Given</code>.</li>
+                </ul>
+
+                <h4>O "Validador" (<code>DocumentValidationTests.feature</code>)</h4>
+                <ul>
+                    <li><strong>Propósito:</strong> Simular um microsserviço focado exclusivamente na <strong>validação de regras de negócio</strong> de documentos (CPF/CNPJ).</li>
+                    <li><strong>Como Funciona:</strong> Usa um <code>WireMockServer</code> para simular o endpoint <code>/v1/documento/validar</code>. A lógica de validação (tamanho, caracteres permitidos) está no <code>@Given</code>, que configura a resposta (<code>200 OK</code> ou <code>400 Bad Request</code>) de acordo com o documento de entrada.</li>
+                </ul>
+
+                <h4>A "Estação Espacial" / "Painel de Controle" (<code>MainBusinessFlows.feature</code>)</h4>
+                <ul>
+                    <li><strong>Propósito:</strong> Nossa arquitetura mais avançada, projetada para testar <strong>fluxos de negócio completos</strong> (CRUD) de forma controlada e data-driven.</li>
+                    <li><strong>Como Funciona:</strong>
+                        <ul>
+                            <li><strong>Data-Driven:</strong> A tabela <code>Examples</code> se tornou um "Painel de Controle", onde cada linha representa um fluxo completo, controlado pela coluna <code>acao</code>.</li>
+                            <li><strong>Banco de Dados em Memória:</strong> Utiliza um <code>HashMap</code> estático para simular um banco de dados, permitindo que os testes tenham "memória".</li>
+                            <li><strong>Flexibilidade:</strong> Permite que você ative ou desative fluxos de teste complexos apenas comentando ou descomentando linhas na tabela <code>Examples</code>, sem tocar no código Java.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4 class="mt-4">Decisões Arquiteturais Críticas que Garantiram a Estabilidade:</h4>
+                <ul>
+                    <li><strong>Isolamento com Tags:</strong> Cada grupo de teste (<code>@local</code>, <code>@local-validation</code>, <code>@main-flow</code>) tem sua própria tag, o que nos permite ter <code>@Before</code> e <code>@After</code> hooks específicos para cada um.</li>
+                    <li><strong><code>RestAssured.reset()</code>:</strong> A "cura definitiva". Este comando, colocado no início de cada <code>@Before</code> dos nossos testes locais, limpa qualquer configuração global "vazada" dos testes da API real, eliminando os erros de <code>Connection reset</code> e <code>timeout</code>.</li>
+                    <li><strong>Portas Dinâmicas (<code>new WireMockServer()</code>):</strong> Deixamos o WireMock escolher uma porta livre a cada cenário, evitando o erro <code>Connection refused</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>3. Capacidades da Nossa API Simulada ("O Que Nossa API Faz")</h3>
+                <p>O nosso ambiente de testes local agora simula um ecossistema de microsserviços com as seguintes capacidades:</p>
+                
+                <h4>Serviço de Busca de Cliente (<code>/v1/cliente/dados</code>)</h4>
+                <ul>
+                    <li>Recebe um <code>POST</code> com um <code>{"documento": "..."}</code>.</li>
+                    <li>Responde com o <code>User</code> completo (JSON) se encontrado (<code>200 OK</code>) ou com <code>404 Not Found</code>.</li>
+                </ul>
+
+                <h4>Serviço de Validação de Documento (<code>/v1/documento/validar</code>)</h4>
+                <ul>
+                    <li>Recebe um <code>POST</code> com um <code>{"documento": "..."}</code>.</li>
+                    <li>Valida regras de negócio como tamanho e caracteres permitidos.</li>
+                    <li>Responde com <code>200 OK</code> se o formato for válido ou <code>400 Bad Request</code> se for inválido.</li>
+                </ul>
+
+                <h4>Serviço de Persistência de Cliente (<code>/v1/clientes</code>)</h4>
+                <ul>
+                    <li><strong><code>POST /v1/clientes</code></strong>: Cria um novo cliente no "banco" em memória e retorna <code>201 Created</code>.</li>
+                    <li><strong><code>GET /v1/clientes/{id}</code></strong>: Busca um cliente pelo ID e o retorna (<code>200 OK</code>) ou retorna <code>404 Not Found</code>.</li>
+                    <li><strong><code>PUT /v1/clientes/{id}</code></strong>: Altera os dados de um cliente e retorna <code>200 OK</code>.</li>
+                    <li><strong><code>DELETE /v1/clientes/{id}</code></strong>: Remove um cliente do "banco" e retorna <code>204 No Content</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card text-white bg-success">
+             <div class="card-body">
+                <h3 class="card-title">Conclusão</h3>
+                <p class="card-text">O projeto evoluiu de um simples teste de API para uma <strong>plataforma de automação completa e robusta</strong>. A arquitetura final, guiada pela sua visão de controle e clareza, nos permite testar desde regras de negócio unitárias até fluxos de ponta a ponta, tudo de forma isolada, estável e com evidências perfeitas.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
