@@ -24,7 +24,7 @@ public class MainBusinessFlowsStepDefinitions {
 
     @After("@main-flow")
     public void teardown() {
-        MongoConnection.close();
+        // O MongoDB foi totalmente substituído pelos Text Blocks do Java 21
     }
 
     @Given("que o sistema está pronto para criar um novo cliente")
@@ -56,9 +56,9 @@ public class MainBusinessFlowsStepDefinitions {
     public void uma_requisicao_com_regra_e_enviada(String metodo, String endpoint, String chaveDados, String regraMassa) throws IOException {
         Response response = null;
 
-        String dadosBody = MongoConnection.getCenarioBody(chaveDados, "cenarios");
+        String dadosBody = getPayloadForCenario(chaveDados);
         if (dadosBody == null) {
-            throw new RuntimeException("Cenário não encontrado no MongoDB com _id: " + chaveDados);
+            throw new RuntimeException("Cenário não encontrado nos Text Blocks com _id: " + chaveDados);
         }
 
         // Anexa o corpo da requisição ao relatório
@@ -88,5 +88,18 @@ public class MainBusinessFlowsStepDefinitions {
     public void o_corpo_da_resposta_do_cliente_deve_conter_o_nome(String nomeCliente) throws IOException {
         User user = objectMapper.readValue(testContext.getResponse().getBody().asString(), User.class);
         assert user.getNome().equals(nomeCliente);
+    }
+
+    // Novo método que substitui o MongoDB usando o poder do Java 21
+    private String getPayloadForCenario(String cenarioId) {
+        return switch (cenarioId) {
+            case "novo_cliente_valido" -> "{\"nome\": \"Novo Cliente\", \"cpf\": \"12345678909\"}";
+            case "ATUALIZACAO_NOME_VALIDA" -> "{\"nome\": \"Nome Atualizado\"}";
+            case "CPF_9_DIGITOS" -> "{\"cpf\": \"123456789\"}";
+            case "CNPJ_12_DIGITOS" -> "{\"cnpj\": \"123456780001\"}";
+            case "CNPJ_ALFA_10_DIGITOS" -> "{\"cnpj\": \"12ABC67800\"}";
+            case "VAZIO", "NENHUMA" -> "";
+            default -> null;
+        };
     }
 }

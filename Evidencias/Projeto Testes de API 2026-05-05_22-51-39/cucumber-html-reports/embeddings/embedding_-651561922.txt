@@ -1,0 +1,1 @@
+Requisição enviada propositalmente sem header de Autorização para validar falha de segurança.

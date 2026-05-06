@@ -1,0 +1,20 @@
+{
+  "cpssoaJuridContr": 0,
+  "ctpoContrNegoc": 0,
+  "nseqContrNegoc": 0,
+  "ncontrLim": 0,
+  "cprodtServcOper": 0,
+  "cpssoaCsumr": 0,
+  "csitSuborLim": 0,
+  "cdoctoCsumr": 0,
+  "ccpfCnpjCsumr": "YAYHIMRUKCWC80",
+  "cflialCpfCnpjC": "0001",
+  "cctrlCpfCnpjC": "01",
+  "cdoctoPssoaEmprC": "string",
+  "vutlzdProdtSubor": 0,
+  "cindcdMoedaUtlzd": 0,
+  "dthrCriacReg": "2025-10-09T17:18:28.985Z",
+  "dthrUltAltReg": "2025-10-09T17:18:28.985Z",
+  "cusuCriacReg": "string",
+  "cusuUltAltReg": "string"
+}

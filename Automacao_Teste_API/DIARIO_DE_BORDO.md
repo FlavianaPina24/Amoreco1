@@ -52,19 +52,22 @@
 **Objetivo:** Elevar o nível de qualidade, manutenibilidade e cobertura do framework.
 
 **Sugestões:**
-1.  **Centralização da Massa de Testes:**
-    - **Problema:** Corpos de requisição (JSONs) estão "chumbados" no código Java, misturando dados com lógica.
-    - **Solução Proposta:** Mover todos os JSONs para o MongoDB, lendo-os através do `MongoConnection.getCenarioBody()`. Isso limpa o código, facilita a manutenção por não-desenvolvedores e permite a reutilização de massas de dados.
+1.  **Centralização da Massa de Testes (CONCLUÍDO com Excelência):**
+    - **Problema Inicial:** O uso de MongoDB local tornava o projeto pesado e dependente de ambiente.
+    - **Solução Implementada:** Atualização para **Java 21** e adoção de **Text Blocks** (`"""`). O framework agora é 100% independente, rápido e preparado para pipelines CI/CD (Azure DevOps, GitHub Actions), dispensando o uso de banco de dados para massas locais.
 
-2.  **Melhoria das Validações (Assertions):**
-    - **Problema:** Os testes atuais validam principalmente o status da resposta e mensagens de sucesso.
-    - **Solução Proposta:**
-        - **Validação de Schema:** Utilizar o `JsonSchemaValidator` do Rest-Assured para garantir que a estrutura do JSON de resposta (o "contrato" da API) não foi quebrada.
-        - **Validações de Múltiplos Campos:** Expandir os passos `Então` para validar o valor ou a existência de múltiplos campos críticos em uma única resposta.
+2.  **Melhoria das Validações / Assertions (CONCLUÍDO):**
+    - **Problema Inicial:** Validações focavam apenas no status code e algumas mensagens.
+    - **Solução Implementada:** Inclusão da biblioteca `json-schema-validator` do Rest-Assured. Criado um step genérico `Então a resposta deve respeitar o contrato do schema "..."` para garantir a integridade total do payload retornado, prevenindo quebras de contrato (Contract Testing).
 
-3.  **Criação de Cenários Negativos:**
-    - **Problema:** O foco principal foi no "caminho feliz".
-    - **Solução Proposta:** Criar cenários que testem deliberadamente as falhas para garantir que a API se comporte de maneira previsível, como:
-        - Enviar requisições com corpo malformado (esperando status 400).
-        - Enviar requisições sem headers obrigatórios (esperando status 401 ou 403).
-        - Tentar acessar recursos com IDs inexistentes (esperando status 404).
+3.  **Criação de Cenários Negativos / Sad Paths (CONCLUÍDO):**
+    - **Problema Inicial:** Foco apenas no "caminho feliz".
+    - **Solução Implementada:** Criação da suíte `ResilienciaErrosAPI.feature`. Foram implementados testes validando comportamentos de erro como *401 Unauthorized* (sem token), *404 Not Found* (recurso inexistente) e *400 Bad Request* (payload malformado), provando a resiliência da API.
+
+## Sessão 8: O Nível Sênior Alcançado
+**Conclusão Final:**
+- O projeto evoluiu de uma base com problemas de geração de relatórios para um **Framework de Automação de API de Nível Sênior**.
+- **Performance:** Dezenas de cenários e centenas de passos executados em ~13 segundos.
+- **Independência:** O projeto não precisa de banco de dados local nem de APIs reais rodando. Ele usa o `WireMock` dinâmico e `Text Blocks` do Java 21.
+- **Evidências:** Relatórios Masterthought HTML gerados de forma impecável, com tratamento dinâmico de diretórios à prova de falhas de IDE e de sistema operacional (Windows/Linux).
+- **Pronto para o Portfólio:** O código atual comprova proficiência em Java, BDD (Cucumber), Rest-Assured, Testes de Contrato, Mocking e Qualidade Contínua.

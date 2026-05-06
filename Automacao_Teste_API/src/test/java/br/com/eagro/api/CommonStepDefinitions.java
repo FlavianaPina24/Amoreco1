@@ -8,6 +8,7 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class CommonStepDefinitions {
@@ -71,5 +72,10 @@ public class CommonStepDefinitions {
     @Then("a resposta deve conter a propriedade {string}")
     public void a_resposta_deve_conter_a_propriedade(String property) {
         testContext.getResponse().then().body(property, notNullValue());
+    }
+
+    @Then("a resposta deve respeitar o contrato do schema {string}")
+    public void a_resposta_deve_respeitar_o_contrato_do_schema(String schemaFileName) {
+        testContext.getResponse().then().assertThat().body(matchesJsonSchemaInClasspath("schemas/" + schemaFileName));
     }
 }

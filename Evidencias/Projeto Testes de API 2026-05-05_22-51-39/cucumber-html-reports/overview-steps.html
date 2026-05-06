@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 2026-05-05_22-51-39) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>Projeto Testes de API</td>
+        <td>2026-05-05_22-51-39</td>
+      <td>05 mai. 2026, 22:51</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.a_delete_request_is_sent_to(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="191308200">0.191</td>
+              <td class="duration" data-value="191308200">0.191</td>
+              <td class="duration" data-value="191308200">0.191</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.a_get_request_is_sent_to(java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="104168800">0.104</td>
+              <td class="duration" data-value="104168800">0.140</td>
+              <td class="duration" data-value="416675200">0.416</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.a_post_request_is_sent_to(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="1298108350">1.298</td>
+              <td class="duration" data-value="1298108350">2.399</td>
+              <td class="duration" data-value="2596216700">2.596</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.a_put_request_is_sent_to(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="505738800">0.505</td>
+              <td class="duration" data-value="505738800">0.505</td>
+              <td class="duration" data-value="505738800">0.505</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.the_request_body_is(java.lang.String)</td>
+              <td>3</td>
+              <td class="duration" data-value="40962300">0.040</td>
+              <td class="duration" data-value="40962300">0.121</td>
+              <td class="duration" data-value="122886900">0.122</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.the_response_body_should_contain_the_property(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="441544650">0.441</td>
+              <td class="duration" data-value="441544650">0.831</td>
+              <td class="duration" data-value="883089300">0.883</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.the_response_body_should_have_the_value_int_for_the_property(java.lang.Integer,java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="22479425">0.022</td>
+              <td class="duration" data-value="22479425">0.029</td>
+              <td class="duration" data-value="89917700">0.089</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.the_response_body_should_have_the_value_string_for_the_property(java.lang.String,java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="21229150">0.021</td>
+              <td class="duration" data-value="21229150">0.022</td>
+              <td class="duration" data-value="84916600">0.084</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ApiStepDefinitions.the_response_status_code_should_be(java.lang.Integer)</td>
+              <td>8</td>
+              <td class="duration" data-value="5245087">0.005</td>
+              <td class="duration" data-value="5245087">0.034</td>
+              <td class="duration" data-value="41960700">0.041</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CommonStepDefinitions.a_resposta_deve_conter_a_mensagem(java.lang.String)</td>
+              <td>29</td>
+              <td class="duration" data-value="21807124">0.021</td>
+              <td class="duration" data-value="21807124">0.098</td>
+              <td class="duration" data-value="632406600">0.632</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CommonStepDefinitions.a_resposta_deve_conter_a_propriedade(java.lang.String)</td>
+              <td>14</td>
+              <td class="duration" data-value="16699364">0.016</td>
+              <td class="duration" data-value="16699364">0.022</td>
+              <td class="duration" data-value="233791100">0.233</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CommonStepDefinitions.a_resposta_deve_ter_o_status(java.lang.Integer)</td>
+              <td>55</td>
+              <td class="duration" data-value="617885">0.000</td>
+              <td class="duration" data-value="617885">0.002</td>
+              <td class="duration" data-value="33983700">0.033</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CommonStepDefinitions.uma_requisicao_e_enviada_para_o_endpoint(java.lang.String,java.lang.String)</td>
+              <td>47</td>
+              <td class="duration" data-value="18335493">0.018</td>
+              <td class="duration" data-value="18335493">0.070</td>
+              <td class="duration" data-value="861768200">0.861</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CommonStepDefinitions.uma_requisicao_e_enviada_para_o_endpoint_com_os_parametros(java.lang.String,java.lang.String,io.cucumber.datatable.DataTable)</td>
+              <td>2</td>
+              <td class="duration" data-value="47956250">0.047</td>
+              <td class="duration" data-value="47956250">0.072</td>
+              <td class="duration" data-value="95912500">0.095</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ConsultaPropostaV1StepDefinitions.o_corpo_da_resposta_da_proposta_deve_conter_o_nome_do_cliente(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="37964700">0.037</td>
+              <td class="duration" data-value="37964700">0.037</td>
+              <td class="duration" data-value="37964700">0.037</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ConsultaPropostaV1StepDefinitions.que_uma_proposta_base_existe_no_sistema_com_a_chave_de_cenario(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="624417600">0.624</td>
+              <td class="duration" data-value="624417600">0.624</td>
+              <td class="duration" data-value="624417600">0.624</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ConsultaPropostaV1StepDefinitions.uma_requisicao_e_enviada_para_o_endpoint_da_proposta_base(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="71934500">0.071</td>
+              <td class="duration" data-value="71934500">0.071</td>
+              <td class="duration" data-value="71934500">0.071</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CriacaoPropostaV1StepDefinitions.que_o_sistema_esta_configurado_para_a_api_de_proposta_v1()</td>
+              <td>3</td>
+              <td class="duration" data-value="999733">0.000</td>
+              <td class="duration" data-value="999733">0.001</td>
+              <td class="duration" data-value="2999200">0.002</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.CriacaoPropostaV1StepDefinitions.uma_requisicao_e_enviada_para_o_endpoint_com_a_chave_de_cenario(java.lang.String,java.lang.String,java.lang.String)</td>
+              <td>3</td>
+              <td class="duration" data-value="53949333">0.053</td>
+              <td class="duration" data-value="53949333">0.064</td>
+              <td class="duration" data-value="161848000">0.161</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.DocumentValidationStepDefinitions.a_validation_post_request_is_sent_to(java.lang.String,java.lang.String)</td>
+              <td>10</td>
+              <td class="duration" data-value="30471190">0.030</td>
+              <td class="duration" data-value="30471190">0.052</td>
+              <td class="duration" data-value="304711900">0.304</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.DocumentValidationStepDefinitions.the_validation_response_body_should_have_the_message(java.lang.String)</td>
+              <td>10</td>
+              <td class="duration" data-value="17785120">0.017</td>
+              <td class="duration" data-value="17785120">0.031</td>
+              <td class="duration" data-value="177851200">0.177</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.DocumentValidationStepDefinitions.the_validation_response_status_code_should_be(java.lang.Integer)</td>
+              <td>10</td>
+              <td class="duration" data-value="299750">0.000</td>
+              <td class="duration" data-value="299750">0.001</td>
+              <td class="duration" data-value="2997500">0.002</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.DocumentValidationStepDefinitions.um_documento_do_cenario_a_ser_validado(java.lang.String)</td>
+              <td>10</td>
+              <td class="duration" data-value="399780">0.000</td>
+              <td class="duration" data-value="399780">0.001</td>
+              <td class="duration" data-value="3997800">0.003</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</td>
+              <td>73</td>
+              <td class="duration" data-value="27314323">0.027</td>
+              <td class="duration" data-value="27314323">1.210</td>
+              <td class="duration" data-value="1993945600">1.993</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderReviewV1StepDefinitions.que_o_sistema_esta_configurado_para_atualizar_a_revisao_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderReviewV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_revisao_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="7992700">0.007</td>
+              <td class="duration" data-value="7992700">0.007</td>
+              <td class="duration" data-value="7992700">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderReviewV1StepDefinitions.que_o_sistema_esta_configurado_para_criar_uma_revisao_de_ordem()</td>
+              <td>1</td>
+              <td class="duration" data-value="7990900">0.007</td>
+              <td class="duration" data-value="7990900">0.007</td>
+              <td class="duration" data-value="7990900">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderReviewV1StepDefinitions.que_o_sistema_esta_configurado_para_enviar_uma_notificacao()</td>
+              <td>1</td>
+              <td class="duration" data-value="10990000">0.010</td>
+              <td class="duration" data-value="10990000">0.010</td>
+              <td class="duration" data-value="10990000">0.010</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderReviewV2StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_revisao_v2_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="8991900">0.008</td>
+              <td class="duration" data-value="8991900">0.008</td>
+              <td class="duration" data-value="8991900">0.008</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTaskControlV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_analise_de_tarefa_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="8991700">0.008</td>
+              <td class="duration" data-value="8991700">0.008</td>
+              <td class="duration" data-value="8991700">0.008</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineStepDefinitions.que_o_sistema_esta_configurado_para_buscar_o_step_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineStepDefinitions.que_o_sistema_esta_configurado_para_criar_steps_de_formalizacao()</td>
+              <td>1</td>
+              <td class="duration" data-value="13987800">0.013</td>
+              <td class="duration" data-value="13987800">0.013</td>
+              <td class="duration" data-value="13987800">0.013</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_timeline_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="7993100">0.007</td>
+              <td class="duration" data-value="7993100">0.007</td>
+              <td class="duration" data-value="7993100">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineV1StepDefinitions.que_o_sistema_esta_configurado_para_construir_a_timeline_da_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5993800">0.005</td>
+              <td class="duration" data-value="5993800">0.005</td>
+              <td class="duration" data-value="5993800">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineV1StepDefinitions.que_o_sistema_esta_configurado_para_criar_um_parametro_de_deadline()</td>
+              <td>1</td>
+              <td class="duration" data-value="7994200">0.007</td>
+              <td class="duration" data-value="7994200">0.007</td>
+              <td class="duration" data-value="7994200">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.OrderTimelineV1StepDefinitions.que_o_sistema_esta_configurado_para_reportar_uma_tarefa_complementar()</td>
+              <td>1</td>
+              <td class="duration" data-value="7992900">0.007</td>
+              <td class="duration" data-value="7992900">0.007</td>
+              <td class="duration" data-value="7992900">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdbbdsrvlimwpStepDefinitions.que_eu_tenho_as_credenciais_para_o_servico_de_limite_climatico()</td>
+              <td>1</td>
+              <td class="duration" data-value="5993300">0.005</td>
+              <td class="duration" data-value="5993300">0.005</td>
+              <td class="duration" data-value="5993300">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdbbdsrvlimwpStepDefinitions.que_o_sistema_esta_configurado_para_cancelar_uma_ordem()</td>
+              <td>1</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdbbdsrvlimwpStepDefinitions.que_o_sistema_esta_configurado_para_cancelar_uma_ordem_v1()</td>
+              <td>1</td>
+              <td class="duration" data-value="7993600">0.007</td>
+              <td class="duration" data-value="7993600">0.007</td>
+              <td class="duration" data-value="7993600">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdbbdsrvlimwpStepDefinitions.que_o_sistema_esta_configurado_para_consultar_o_status_de_uma_ordem()</td>
+              <td>1</td>
+              <td class="duration" data-value="4995600">0.004</td>
+              <td class="duration" data-value="4995600">0.004</td>
+              <td class="duration" data-value="4995600">0.004</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdbbdsrvlimwpStepDefinitions.que_o_sistema_esta_configurado_para_criar_uma_ordem()</td>
+              <td>1</td>
+              <td class="duration" data-value="10989500">0.010</td>
+              <td class="duration" data-value="10989500">0.010</td>
+              <td class="duration" data-value="10989500">0.010</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdutosSimulationStepDefinitions.que_o_sistema_esta_configurado_para_atualizar_a_simulacao_com_id(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993600">0.006</td>
+              <td class="duration" data-value="6993600">0.006</td>
+              <td class="duration" data-value="6993600">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdutosSimulationStepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_simulacao_com_id(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="4994900">0.004</td>
+              <td class="duration" data-value="4994900">0.004</td>
+              <td class="duration" data-value="4994900">0.004</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdutosSimulationStepDefinitions.que_o_sistema_esta_configurado_para_buscar_todas_as_simulacoes()</td>
+              <td>1</td>
+              <td class="duration" data-value="16983900">0.016</td>
+              <td class="duration" data-value="16983900">0.016</td>
+              <td class="duration" data-value="16983900">0.016</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdutosSimulationStepDefinitions.que_o_sistema_esta_configurado_para_gravar_uma_simulacao()</td>
+              <td>1</td>
+              <td class="duration" data-value="6993700">0.006</td>
+              <td class="duration" data-value="6993700">0.006</td>
+              <td class="duration" data-value="6993700">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ProdutosSimulationV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_todas_as_simulacoes_v1()</td>
+              <td>1</td>
+              <td class="duration" data-value="6992600">0.006</td>
+              <td class="duration" data-value="6992600">0.006</td>
+              <td class="duration" data-value="6992600">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.PropostaTombamentoStepDefinitions.que_o_sistema_esta_configurado_para_o_teste_de_tombamento_da_proposta(int)</td>
+              <td>2</td>
+              <td class="duration" data-value="7492400">0.007</td>
+              <td class="duration" data-value="7492400">0.007</td>
+              <td class="duration" data-value="14984800">0.014</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_atualizar_a_recontratacao_com_dados_do_agrotools_para_a_oferta(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993100">0.006</td>
+              <td class="duration" data-value="6993100">0.006</td>
+              <td class="duration" data-value="6993100">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_atualizar_a_recontratacao_com_id(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993500">0.006</td>
+              <td class="duration" data-value="6993500">0.006</td>
+              <td class="duration" data-value="6993500">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_atualizar_o_custeio_da_ordem_a_partir_da_oferta(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5993900">0.005</td>
+              <td class="duration" data-value="5993900">0.005</td>
+              <td class="duration" data-value="5993900">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_ordem_com_numero_de_referencia(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="duration" data-value="5994900">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_recontratacao_com_id(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="7992100">0.007</td>
+              <td class="duration" data-value="7992100">0.007</td>
+              <td class="duration" data-value="7992100">0.007</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_buscar_recontratacoes_por_id_de_usuario()</td>
+              <td>1</td>
+              <td class="duration" data-value="6995000">0.006</td>
+              <td class="duration" data-value="6995000">0.006</td>
+              <td class="duration" data-value="6995000">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_criar_uma_simulacao_a_partir_da_oferta(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5994300">0.005</td>
+              <td class="duration" data-value="5994300">0.005</td>
+              <td class="duration" data-value="5994300">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_iniciar_um_fluxo_de_preenchimento()</td>
+              <td>1</td>
+              <td class="duration" data-value="5995100">0.005</td>
+              <td class="duration" data-value="5995100">0.005</td>
+              <td class="duration" data-value="5995100">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoStepDefinitions.que_o_sistema_esta_configurado_para_validar_a_ordem(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="duration" data-value="6993800">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.RecontratacaoFormalizacaoV1StepDefinitions.que_o_sistema_esta_configurado_para_criar_uma_ordem_de_recontratacao_v1()</td>
+              <td>1</td>
+              <td class="duration" data-value="10989000">0.010</td>
+              <td class="duration" data-value="10989000">0.010</td>
+              <td class="duration" data-value="10989000">0.010</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ResilienciaErrosStepDefinitions.que_a_api_de_simulacao_de_erros_esta_configurada()</td>
+              <td>3</td>
+              <td class="duration" data-value="17650466">0.017</td>
+              <td class="duration" data-value="17650466">0.018</td>
+              <td class="duration" data-value="52951400">0.052</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ResilienciaErrosStepDefinitions.uma_requisicao_payload_malformado(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="14986000">0.014</td>
+              <td class="duration" data-value="14986000">0.014</td>
+              <td class="duration" data-value="14986000">0.014</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.ResilienciaErrosStepDefinitions.uma_requisicao_sem_token(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="12985900">0.012</td>
+              <td class="duration" data-value="12985900">0.012</td>
+              <td class="duration" data-value="12985900">0.012</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.SpecialistDataV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_ordem_de_especialista(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="11990600">0.011</td>
+              <td class="duration" data-value="11990600">0.011</td>
+              <td class="duration" data-value="11990600">0.011</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.SpecialistDataV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_clientes_por_id_de_cliente()</td>
+              <td>1</td>
+              <td class="duration" data-value="6989100">0.006</td>
+              <td class="duration" data-value="6989100">0.006</td>
+              <td class="duration" data-value="6989100">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.SpecialistDataV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_novos_clientes_por_nome()</td>
+              <td>1</td>
+              <td class="duration" data-value="18980300">0.018</td>
+              <td class="duration" data-value="18980300">0.018</td>
+              <td class="duration" data-value="18980300">0.018</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.SpecialistDataV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_o_documento_do_cliente_da_agencia_e_conta(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6994500">0.006</td>
+              <td class="duration" data-value="6994500">0.006</td>
+              <td class="duration" data-value="6994500">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.SpecialistDataV1StepDefinitions.que_o_sistema_esta_configurado_para_deletar_um_cliente_por_id()</td>
+              <td>1</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_atualizar_a_delegacao(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6994800">0.006</td>
+              <td class="duration" data-value="6994800">0.006</td>
+              <td class="duration" data-value="6994800">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_a_delegacao(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5996100">0.005</td>
+              <td class="duration" data-value="5996100">0.005</td>
+              <td class="duration" data-value="5996100">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_delegacoes_pelo_email(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="15502000">0.015</td>
+              <td class="duration" data-value="15502000">0.015</td>
+              <td class="duration" data-value="15502000">0.015</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_o_cliente_para_o_especialista(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="duration" data-value="5994500">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_buscar_ordens_para_delegacao_pelo_email(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="duration" data-value="6993900">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_criar_uma_delegacao()</td>
+              <td>1</td>
+              <td class="duration" data-value="6992900">0.006</td>
+              <td class="duration" data-value="6992900">0.006</td>
+              <td class="duration" data-value="6992900">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_delegar_usuarios_especialistas()</td>
+              <td>1</td>
+              <td class="duration" data-value="6992700">0.006</td>
+              <td class="duration" data-value="6992700">0.006</td>
+              <td class="duration" data-value="6992700">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_deletar_a_delegacao(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="6994100">0.006</td>
+              <td class="duration" data-value="6994100">0.006</td>
+              <td class="duration" data-value="6994100">0.006</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">br.com.eagro.api.UserManagementDelegationV1StepDefinitions.que_o_sistema_esta_configurado_para_revogar_delegacoes_em_lote()</td>
+              <td>1</td>
+              <td class="duration" data-value="5994600">0.005</td>
+              <td class="duration" data-value="5994600">0.005</td>
+              <td class="duration" data-value="5994600">0.005</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>74</td>
+            <td>351</td>
+            <td class="duration">0.030</td>
+            <td class="duration">2.596</td>
+            <td class="duration">10.641</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

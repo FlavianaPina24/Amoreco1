@@ -1,54 +1,77 @@
-# Diário de Bordo do Projeto de Automação de API
-# Última Atualização: 12/09/2025 09:30
+# 🚀 Framework Avançado de Automação de Testes de API
 
-Este documento serve como um registro vivo da nossa jornada, nossas decisões de arquitetura e a evolução da nossa plataforma de testes.
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=java)
+![Cucumber](https://img.shields.io/badge/Cucumber-BDD-43B02A?style=for-the-badge&logo=cucumber)
+![Rest-Assured](https://img.shields.io/badge/Rest--Assured-API_Testing-008000?style=for-the-badge)
+![WireMock](https://img.shields.io/badge/WireMock-Mocking-blue?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build_Tool-C71A36?style=for-the-badge&logo=apachemaven)
 
----
+Bem-vindo(a) ao meu projeto de automação de testes de API! 
 
-## A Jornada da Nossa Plataforma
-
-### Fase 1: A Fundação (05/09/2025 - 10/09/2025)
-
-Nesta fase inicial, o foco foi transformar um script de automação em uma plataforma de testes profissional e robusta.
-
-*   **Estruturação Profissional:** O projeto foi estabelecido sobre uma base sólida de tecnologias de mercado: Java 11, Maven para gerenciamento de dependências, Cucumber para uma escrita de testes em BDD (Behavior-Driven Development) e JUnit 5 como motor de execução.
-
-*   **Evidências Robustas e Auditáveis:** Implementamos um sistema de geração de evidências de nível empresarial, com características cruciais:
-    *   **Não sobrescrita:** Cada execução gera um novo relatório HTML com timestamp, garantindo um histórico completo para auditoria.
-    *   **Detalhado:** Criamos o conceito de "Retrato da Comunicação", anexando em cada teste os detalhes exatos da requisição (URL, corpo) e da resposta (status, corpo), o que se provou crucial para depuração rápida.
-    *   **Moderno:** Adotamos o `maven-cucumber-reporting` para gerar um dashboard completo e profissional, com gráficos e visão geral dos resultados.
-
-*   **Criação do Laboratório de Testes Local (WireMock):** Demos um passo fundamental para a independência do projeto, com a capacidade de simular APIs localmente. Isso nos permitiu testar qualquer cenário, incluindo erros complexos (4xx, 5xx), timeouts e regras de negócio específicas, sem depender de APIs externas ou da internet, pavimentando o caminho para a nossa arquitetura de microsserviços simulados.
-
-### Fase 2: A Revolução dos Dados (11/09/2025 em diante)
-
-Nesta fase, demos o nosso maior salto quântico, focando na pureza arquitetural e na escalabilidade infinita através da centralização de dados.
-
-*   **O Módulo de Inteligência:** Fomos além do teste de API tradicional, criando uma classe de lógica de negócio pura (`ValidadorDocumento.java`) para validar regras complexas, como o cálculo de dígitos verificadores de documentos.
-
-*   **A Fábrica de Dados:** Implementamos um sistema de `regra_massa` que permite a geração e transformação dinâmica de dados a partir de uma "semente" de dados.
-
-*   **A Revolução MongoDB (A Fundação de Dados Persistente):** Substituímos toda a gestão de dados volátil por uma conexão direta com um banco de dados **MongoDB Atlas** na nuvem.
-
-*   **O Banco de Dados Universal:** Atingimos a nossa visão de arquitetura pura. Migramos **TODA** a massa de teste do projeto para o MongoDB, eliminando completamente os dados "amarrados" do código e dos arquivos `.feature`. A plataforma agora opera com uma separação total entre o **comportamento** (descrito nos cenários) e os **dados** (armazenados na nuvem).
+Este repositório contém um framework construído do zero, focado em **performance, isolamento e resiliência**, projetado para validar integrações de sistemas complexos seguindo as melhores práticas de mercado e de Qualidade de Software (QA).
 
 ---
 
-## Arquitetura Atual da Plataforma
+## ✨ Destaques e Arquitetura
 
-A plataforma opera em uma arquitetura de automação de ponta, utilizando um banco de dados **MongoDB Atlas** na nuvem como a fonte única da verdade para toda a massa de teste.
+Este projeto não se limita apenas ao "Caminho Feliz" (Happy Path). Ele foi arquitetado para lidar com o mundo real do desenvolvimento de software:
 
-*   **Fonte de Dados:** MongoDB Atlas (Nuvem)
-*   **Princípio de Teste:** Os cenários no arquivo `.feature` atuam como um "Painel de Controle", onde uma `chave_cenario` aponta para um `_id` no MongoDB.
-*   **Motor de Teste:** A lógica em Java (Step Definitions) busca dinamicamente os dados no MongoDB para executar os testes.
+*   **🛡️ Testes de Contrato (Contract Testing):** Utilização do `JsonSchemaValidator` para garantir que as respostas da API não quebrem as estruturas previamente acordadas.
+*   **🛑 Testes de Resiliência (Sad Paths):** Suíte dedicada a validar como a API lida com erros críticos como `401 Unauthorized` (falta de token), `404 Not Found` (recursos inexistentes) e `400 Bad Request` (payloads malformados).
+*   **🎭 Isolamento com WireMock:** Dependência zero de serviços externos! O framework levanta servidores dinâmicos usando `WireMock` para simular APIs. Isso garante que os testes não quebrem por falhas de rede de terceiros e estejam sempre prontos para pipelines de CI/CD.
+*   **⚡ Performance com Java 21:** Uso dos modernos `Text Blocks` (`"""`) do Java 21 para centralização de massas de dados. Eliminação completa da necessidade de bancos de dados locais, mantendo o framework leve e extremamente rápido (execução de dezenas de cenários em poucos segundos).
+*   **📊 Evidências Modernas:** Geração automatizada de dashboards em HTML usando `Masterthought Cucumber Reporting`, facilitando a leitura por gestores e pessoas não-técnicas.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+*   **Linguagem:** Java 21 (JDK)
+*   **Gerenciamento:** Apache Maven
+*   **BDD / Core:** Cucumber (`.feature`)
+*   **Requisições & Validações:** Rest-Assured
+*   **Mock de Serviços:** WireMock
+*   **Relatórios:** Masterthought
 
 ---
 
-## Ideias em Aberto (Próximos Passos)
+## 🚀 Como Executar o Projeto
 
-### Projeto 5: A "Torre de Controle" (Unificação dos Mocks)
-*   **Status:** 💡 Ideia
-*   **Descrição:** Unificar todos os servidores de mock (`Validador` e `Estação Espacial`) em um único "Super Mock" para permitir testes de fluxo de negócio entre os diferentes serviços simulados.
-*   **Vantagens:** Permitiria a criação de cenários de teste de integração de ponta a ponta, respondendo a perguntas como: "Quando eu crio um cliente, o serviço de validação é chamado corretamente?".
+### Pré-requisitos
+*   Java JDK 21 instalado e configurado nas variáveis de ambiente.
+*   Maven instalado.
+*   Uma IDE de sua preferência (IntelliJ IDEA, VS Code ou Eclipse).
+
+### Passo a Passo
+
+1. Faça o clone deste repositório:
+   ```bash
+   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   ```
+
+2. Abra o projeto na sua IDE. O Maven fará o download de todas as dependências automaticamente.
+
+3. Para evitar bugs comuns de execução do Windows/IDE e garantir a geração da evidência HTML, a execução é centralizada em uma única classe controladora. Na sua IDE, localize o arquivo abaixo e clique em **Run** (ou `Run Java`):
+   
+   👉 `src/test/java/br/com/eagro/api/Executor.java`
+
+### Analisando os Relatórios (Dashboard)
+
+Logo após a execução da classe `Executor`, verifique a pasta raiz do projeto. 
+1. Acesse a pasta `Evidencias/`.
+2. Abra a subpasta gerada com a data e hora da execução.
+3. Dê um duplo clique no arquivo `overview-features.html` para abrir o Dashboard completo no seu navegador.
+
+*(Você poderá ver gráficos detalhados, o passo a passo de cada teste e logs completos das requisições JSON mockadas).*
 
 ---
+
+## 📖 Documentação de Bordo
+
+Para um olhar mais aprofundado sobre os desafios superados e as decisões arquiteturais tomadas durante o desenvolvimento (incluindo as refatorações para Java 21), confira o nosso Diário de Bordo e Relatórios Técnicos.
+
+---
+
+👨‍💻 **Desenvolvido por Flaviana Pina**  
+*Especialista em Qualidade de Software (QA) e Business Analyst*  
+🔗 Visite meu Portfólio

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema de Mensagem Genérica de Sucesso",
+  "type": "object",
+  "properties": {
+    "mensagem": {
+      "type": "string"
+    }
+  },
+  "required": ["mensagem"]
+}

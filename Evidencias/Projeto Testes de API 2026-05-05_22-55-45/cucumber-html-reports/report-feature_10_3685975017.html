@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 2026-05-05_22-55-45) - Feature: prodbbdsrvlimwp</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>Projeto Testes de API</td>
+        <td>2026-05-05_22-55-45</td>
+      <td>05 mai. 2026, 22:55</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Feature Report</h2>
+  </div>
+</div>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table class="stats-table">
+
+
+<thead>
+  <tr class="header dont-sort">
+      <th></th>
+    <th colspan="6">Steps</th>
+    <th colspan="3">Scenarios</th>
+    <th colspan="2">Features</th>
+  </tr>
+  <tr>
+    <th>Feature</th>
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="skipped">Skipped</th>
+    <th class="pending">Pending</th>
+    <th class="undefined">Undefined</th>
+    <th class="total">Total</th>
+
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="total">Total</th>
+
+    <th>Duration</th>
+    <th>Status</th>
+  </tr>
+</thead>
+
+
+        <tbody>
+        <tr>
+          <td class="tagname">prodbbdsrvlimwp</td>
+          <td      class="passed"    >20</td>
+          <td >0</td>
+          <td >0</td>
+          <td >0</td>
+          <td >0</td>
+          <td class="total">20</td>
+
+          <td  class="passed"    >5</td>
+          <td >0</td>
+          <td class="total">5</td>
+
+          <td class="duration" data-value="153858000">0.153</td>
+          <td class="passed">Passed</td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-md-offset-10">
+      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
+      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="feature">
+
+<div class="tags indention">
+</div>
+
+
+<div class="brief passed">
+  <span class="keyword indention">Funcionalidade</span>
+  <span class="name">prodbbdsrvlimwp</span>
+
+
+</div>
+
+        <div class="description indention">  Como um consumidor da API,
+  Eu quero verificar o status do servi&ccedil;o,
+  Para garantir que ele est&aacute; operacional.</div>
+
+        <div class="elements inner-level">
+
+<div class="element">
+
+
+<div class="tags indention">
+</div>
+
+
+  <span class="lead-duration duration">0.032</span>
+
+
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
+
+<div class="brief passed">
+  <span class="keyword indention">Cen&aacute;rio</span>
+  <span class="name">Verificar o status do servi&ccedil;o (Health Check)</span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-1" class="collapse collapsable-details ">
+
+
+  <div class="inner-level hooks-element-before">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#before-2">
+
+<div class="brief passed">
+  <span class="keyword indention">Hooks</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+    </div>
+
+    <div id="before-2" class="inner-level collapse collapsable-details ">
+        <div class="hook">
+          <div class="brief passed">
+            <span class="keyword indention">Before</span>
+              <span class="location name">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</span>
+
+  <span class="lead-duration duration">0.006</span>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="steps inner-level">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-3">
+
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </div>
+
+  <div id="steps-3" class="inner-level collapse collapsable-details ">
+      <div class="step">
+
+
+<div class="brief step-name-Dado passed">
+  <span class="keyword indention">Dado</span>
+  <span class="name">que eu tenho as credenciais para o servi&ccedil;o de Limite Clim&aacute;tico</span>
+
+  <span class="lead-duration duration">0.005</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Quando passed">
+  <span class="keyword indention">Quando</span>
+  <span class="name">uma requisi&ccedil;&atilde;o <span class="argument">&quot;GET&quot;</span> &eacute; enviada para o endpoint <span class="argument">&quot;/v2/orders/health&quot;</span></span>
+
+  <span class="lead-duration duration">0.010</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Ent&amp;atilde;o passed">
+  <span class="keyword indention">Ent&atilde;o</span>
+  <span class="name">a resposta deve ter o status <span class="argument">200</span></span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-E passed">
+  <span class="keyword indention">E</span>
+  <span class="name">a resposta deve conter a propriedade <span class="argument">&quot;status&quot;</span></span>
+
+  <span class="lead-duration duration">0.015</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<div class="element">
+
+
+<div class="tags indention">
+</div>
+
+
+  <span class="lead-duration duration">0.027</span>
+
+
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-4">
+
+<div class="brief passed">
+  <span class="keyword indention">Cen&aacute;rio</span>
+  <span class="name">Cancelar uma ordem via backoffice</span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-4" class="collapse collapsable-details ">
+
+
+  <div class="inner-level hooks-element-before">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#before-5">
+
+<div class="brief passed">
+  <span class="keyword indention">Hooks</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+    </div>
+
+    <div id="before-5" class="inner-level collapse collapsable-details ">
+        <div class="hook">
+          <div class="brief passed">
+            <span class="keyword indention">Before</span>
+              <span class="location name">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</span>
+
+  <span class="lead-duration duration">0.005</span>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="steps inner-level">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-6">
+
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </div>
+
+  <div id="steps-6" class="inner-level collapse collapsable-details ">
+      <div class="step">
+
+
+<div class="brief step-name-Dado passed">
+  <span class="keyword indention">Dado</span>
+  <span class="name">que o sistema est&aacute; configurado para cancelar uma ordem</span>
+
+  <span class="lead-duration duration">0.005</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="embeddings inner-level">
+  <div class="embedding indention">
+    <div data-toggle="collapse" data-target="#embedding-7" class="collapsable-control">
+      <a>Request Body</a>
+      <a href="embeddings/embedding_-2005255398.json" download target="_blank">
+        <span class="download-button glyphicon glyphicon-download-alt"></span>
+      </a>
+    </div>
+
+    <div id="embedding-7" class="collapse collapsable-details ">
+      <pre class="embedding-content">{
+  &quot;cpssoaJuridContr&quot;: 0,
+  &quot;ctpoContrNegoc&quot;: 0,
+  &quot;nseqContrNegoc&quot;: 0,
+  &quot;ncontrLim&quot;: 0,
+  &quot;cprodtServcOper&quot;: 0,
+  &quot;cpssoaCsumr&quot;: 0,
+  &quot;csitSuborLim&quot;: 0,
+  &quot;cdoctoCsumr&quot;: 0,
+  &quot;ccpfCnpjCsumr&quot;: &quot;YAYHIMRUKCWC80&quot;,
+  &quot;cflialCpfCnpjC&quot;: &quot;0001&quot;,
+  &quot;cctrlCpfCnpjC&quot;: &quot;01&quot;,
+  &quot;cdoctoPssoaEmprC&quot;: &quot;string&quot;,
+  &quot;vutlzdProdtSubor&quot;: 0,
+  &quot;cindcdMoedaUtlzd&quot;: 0,
+  &quot;dthrCriacReg&quot;: &quot;2025-10-09T17:18:28.985Z&quot;,
+  &quot;dthrUltAltReg&quot;: &quot;2025-10-09T17:18:28.985Z&quot;,
+  &quot;cusuCriacReg&quot;: &quot;string&quot;,
+  &quot;cusuUltAltReg&quot;: &quot;string&quot;
+}</pre>
+    </div>
+  </div>
+  </div>
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Quando passed">
+  <span class="keyword indention">Quando</span>
+  <span class="name">uma requisi&ccedil;&atilde;o <span class="argument">&quot;POST&quot;</span> &eacute; enviada para o endpoint <span class="argument">&quot;/v2/orders/backoffice/cancel&quot;</span></span>
+
+  <span class="lead-duration duration">0.010</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Ent&amp;atilde;o passed">
+  <span class="keyword indention">Ent&atilde;o</span>
+  <span class="name">a resposta deve ter o status <span class="argument">200</span></span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-E passed">
+  <span class="keyword indention">E</span>
+  <span class="name">a resposta deve conter a mensagem <span class="argument">&quot;Ordem cancelada com sucesso&quot;</span></span>
+
+  <span class="lead-duration duration">0.010</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<div class="element">
+
+
+<div class="tags indention">
+</div>
+
+
+  <span class="lead-duration duration">0.027</span>
+
+
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-8">
+
+<div class="brief passed">
+  <span class="keyword indention">Cen&aacute;rio</span>
+  <span class="name">Consultar o status de uma ordem</span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-8" class="collapse collapsable-details ">
+
+
+  <div class="inner-level hooks-element-before">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#before-9">
+
+<div class="brief passed">
+  <span class="keyword indention">Hooks</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+    </div>
+
+    <div id="before-9" class="inner-level collapse collapsable-details ">
+        <div class="hook">
+          <div class="brief passed">
+            <span class="keyword indention">Before</span>
+              <span class="location name">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</span>
+
+  <span class="lead-duration duration">0.005</span>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="steps inner-level">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-10">
+
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </div>
+
+  <div id="steps-10" class="inner-level collapse collapsable-details ">
+      <div class="step">
+
+
+<div class="brief step-name-Dado passed">
+  <span class="keyword indention">Dado</span>
+  <span class="name">que o sistema est&aacute; configurado para consultar o status de uma ordem</span>
+
+  <span class="lead-duration duration">0.004</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Quando passed">
+  <span class="keyword indention">Quando</span>
+  <span class="name">uma requisi&ccedil;&atilde;o <span class="argument">&quot;GET&quot;</span> &eacute; enviada para o endpoint <span class="argument">&quot;/v2/orders/backoffice/80834236000162/status&quot;</span></span>
+
+  <span class="lead-duration duration">0.011</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Ent&amp;atilde;o passed">
+  <span class="keyword indention">Ent&atilde;o</span>
+  <span class="name">a resposta deve ter o status <span class="argument">200</span></span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-E passed">
+  <span class="keyword indention">E</span>
+  <span class="name">a resposta deve conter a propriedade <span class="argument">&quot;status&quot;</span></span>
+
+  <span class="lead-duration duration">0.010</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<div class="element">
+
+
+<div class="tags indention">
+</div>
+
+
+  <span class="lead-duration duration">0.029</span>
+
+
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-11">
+
+<div class="brief passed">
+  <span class="keyword indention">Cen&aacute;rio</span>
+  <span class="name">Criar uma ordem via backoffice</span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-11" class="collapse collapsable-details ">
+
+
+  <div class="inner-level hooks-element-before">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#before-12">
+
+<div class="brief passed">
+  <span class="keyword indention">Hooks</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+    </div>
+
+    <div id="before-12" class="inner-level collapse collapsable-details ">
+        <div class="hook">
+          <div class="brief passed">
+            <span class="keyword indention">Before</span>
+              <span class="location name">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</span>
+
+  <span class="lead-duration duration">0.006</span>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="steps inner-level">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-13">
+
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </div>
+
+  <div id="steps-13" class="inner-level collapse collapsable-details ">
+      <div class="step">
+
+
+<div class="brief step-name-Dado passed">
+  <span class="keyword indention">Dado</span>
+  <span class="name">que o sistema est&aacute; configurado para criar uma ordem</span>
+
+  <span class="lead-duration duration">0.004</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="embeddings inner-level">
+  <div class="embedding indention">
+    <div data-toggle="collapse" data-target="#embedding-14" class="collapsable-control">
+      <a>Request Body</a>
+      <a href="embeddings/embedding_-1531530888.json" download target="_blank">
+        <span class="download-button glyphicon glyphicon-download-alt"></span>
+      </a>
+    </div>
+
+    <div id="embedding-14" class="collapse collapsable-details ">
+      <pre class="embedding-content">{
+  &quot;ccsist&quot;: &quot;AGRO&quot;,
+  &quot;cpssoaJuridSensi&quot;: 0,
+  &quot;ctpoContrSensi&quot;: 0,
+  &quot;nseqContrSensi&quot;: 0,
+  &quot;cpssoaJuridContr&quot;: 0,
+  &quot;ctpoContrNegoc&quot;: 0,
+  &quot;nseqContrNegoc&quot;: 0,
+  &quot;ncontrLimProdt&quot;: 0,
+  &quot;cprodtServcOper&quot;: 0,
+  &quot;cpssoa&quot;: 0,
+  &quot;ccatlgGarnt&quot;: 0,
+  &quot;ctpoCoobcProdt&quot;: 0,
+  &quot;ctpoRecProdt&quot;: 0,
+  &quot;cutilzSpreadTx&quot;: 0,
+  &quot;cpssoaCsumr&quot;: 0,
+  &quot;ctpoPssoaCsumr&quot;: &quot;string&quot;,
+  &quot;cdoctoCsumrLim&quot;: 0,
+  &quot;ccpfCnpjCsumrLim&quot;: &quot;41564768971006&quot;,
+  &quot;cflialCpfCnpjCsu&quot;: &quot;0001&quot;,
+  &quot;cctrlCpfCnpjCsum&quot;: &quot;01&quot;,
+  &quot;cdoctoPssoaEmprC&quot;: &quot;string&quot;,
+  &quot;pspreadProdt&quot;: 0,
+  &quot;cindcdUndSpread&quot;: 0,
+  &quot;cundOrgnz&quot;: 0,
+  &quot;cpssoaJuridOrgnz&quot;: 0,
+  &quot;qtdAvalista&quot;: 0,
+  &quot;grupoAvalista&quot;: [
+    {
+      &quot;cdoctoAvals&quot;: 0,
+      &quot;ccpfCnpjAval&quot;: &quot;41564768971006&quot;,
+      &quot;cflialCpfCnpjAva&quot;: &quot;0001&quot;,
+      &quot;cctrlCpfCnpjAval&quot;: &quot;01&quot;,
+      &quot;cdoctoPssoaEmprA&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;dthrCriacReg&quot;: &quot;2025-10-09T17:15:59.351Z&quot;,
+  &quot;dthrUltAltReg&quot;: &quot;2025-10-09T17:15:59.351Z&quot;,
+  &quot;cusuCriacReg&quot;: &quot;string&quot;,
+  &quot;cusuUltAltReg&quot;: &quot;string&quot;
+}</pre>
+    </div>
+  </div>
+  </div>
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Quando passed">
+  <span class="keyword indention">Quando</span>
+  <span class="name">uma requisi&ccedil;&atilde;o <span class="argument">&quot;POST&quot;</span> &eacute; enviada para o endpoint <span class="argument">&quot;/v2/orders/backoffice&quot;</span></span>
+
+  <span class="lead-duration duration">0.012</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Ent&amp;atilde;o passed">
+  <span class="keyword indention">Ent&atilde;o</span>
+  <span class="name">a resposta deve ter o status <span class="argument">201</span></span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-E passed">
+  <span class="keyword indention">E</span>
+  <span class="name">a resposta deve conter a mensagem <span class="argument">&quot;Ordem criada com sucesso&quot;</span></span>
+
+  <span class="lead-duration duration">0.011</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<div class="element">
+
+
+<div class="tags indention">
+</div>
+
+
+  <span class="lead-duration duration">0.034</span>
+
+
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-15">
+
+<div class="brief passed">
+  <span class="keyword indention">Cen&aacute;rio</span>
+  <span class="name">Cancelar uma ordem V1 via backoffice</span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-15" class="collapse collapsable-details ">
+
+
+  <div class="inner-level hooks-element-before">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#before-16">
+
+<div class="brief passed">
+  <span class="keyword indention">Hooks</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+    </div>
+
+    <div id="before-16" class="inner-level collapse collapsable-details ">
+        <div class="hook">
+          <div class="brief passed">
+            <span class="keyword indention">Before</span>
+              <span class="location name">br.com.eagro.api.Hooks.setupScenario(io.cucumber.java.Scenario)</span>
+
+  <span class="lead-duration duration">0.007</span>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="steps inner-level">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-17">
+
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+
+
+     <i class="chevron fa fa-fw"></i>
+</div>
+
+  </div>
+
+  <div id="steps-17" class="inner-level collapse collapsable-details ">
+      <div class="step">
+
+
+<div class="brief step-name-Dado passed">
+  <span class="keyword indention">Dado</span>
+  <span class="name">que o sistema est&aacute; configurado para cancelar uma ordem V1</span>
+
+  <span class="lead-duration duration">0.006</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="embeddings inner-level">
+  <div class="embedding indention">
+    <div data-toggle="collapse" data-target="#embedding-18" class="collapsable-control">
+      <a>Request Body</a>
+      <a href="embeddings/embedding_621249955.json" download target="_blank">
+        <span class="download-button glyphicon glyphicon-download-alt"></span>
+      </a>
+    </div>
+
+    <div id="embedding-18" class="collapse collapsable-details ">
+      <pre class="embedding-content">{
+  &quot;cpssoaJuridContr&quot;: 0,
+  &quot;ctpoContrNegoc&quot;: 0,
+  &quot;nseqContrNegoc&quot;: 0,
+  &quot;ncontrLim&quot;: 0,
+  &quot;cprodtServcOper&quot;: 0,
+  &quot;cpssoaCsumr&quot;: 0,
+  &quot;csitSuborLim&quot;: 0,
+  &quot;cdoctoCsumr&quot;: 0,
+  &quot;ccpfCnpjCsumr&quot;: 0,
+  &quot;cflialCpfCnpjC&quot;: 0,
+  &quot;cctrlCpfCnpjC&quot;: 0,
+  &quot;cdoctoPssoaEmprC&quot;: &quot;string&quot;,
+  &quot;vutlzdProdtSubor&quot;: 0,
+  &quot;cindcdMoedaUtlzd&quot;: 0
+}</pre>
+    </div>
+  </div>
+  </div>
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Quando passed">
+  <span class="keyword indention">Quando</span>
+  <span class="name">uma requisi&ccedil;&atilde;o <span class="argument">&quot;POST&quot;</span> &eacute; enviada para o endpoint <span class="argument">&quot;/produtos-bbd-agro-srv-limite-clim-wrapper/api/v1/order/backoffice/cancel&quot;</span></span>
+
+  <span class="lead-duration duration">0.013</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-Ent&amp;atilde;o passed">
+  <span class="keyword indention">Ent&atilde;o</span>
+  <span class="name">a resposta deve ter o status <span class="argument">200</span></span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-E passed">
+  <span class="keyword indention">E</span>
+  <span class="name">a resposta deve conter a mensagem <span class="argument">&quot;Ordem V1 cancelada com sucesso&quot;</span></span>
+
+  <span class="lead-duration duration">0.013</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-md-offset-10">
+      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
+      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
