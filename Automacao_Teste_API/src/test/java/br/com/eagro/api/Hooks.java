@@ -32,7 +32,6 @@ public class Hooks {
     public static void afterAll() {
         TestContext.stopMockServer();
         System.out.println("HOOK @AfterAll: Servidor WireMock parado.");
-        ReportGenerator.generateReport();
     }
 
     @Before

@@ -28,10 +28,9 @@ public class ConsultaPropostaV1StepDefinitions {
 
     @Given("que uma proposta base existe no sistema com a chave de cenário {string}")
     public void que_uma_proposta_base_existe_no_sistema_com_a_chave_de_cenario(String chaveCenario) throws IOException {
-        String collectionName = (String) testContext.get("collectionName");
-        String dadosBase = MongoConnection.getCenarioBody(chaveCenario, collectionName);
+        String dadosBase = getPayloadForCenario(chaveCenario);
         if (dadosBase == null) {
-            throw new RuntimeException("Cenário de consulta '" + chaveCenario + "' não encontrado na coleção '" + collectionName + "'");
+            throw new RuntimeException("Cenário de consulta '" + chaveCenario + "' não encontrado nos Text Blocks");
         }
 
         Map<String, Object> propostaData = objectMapper.readValue(dadosBase, new TypeReference<>() {});
@@ -93,5 +92,20 @@ public class ConsultaPropostaV1StepDefinitions {
     @Then("o corpo da resposta da proposta deve conter o nome do cliente {string}")
     public void o_corpo_da_resposta_da_proposta_deve_conter_o_nome_do_cliente(String nomeCliente) {
         testContext.getResponse().then().body("cadCli.iScialCli", equalTo(nomeCliente));
+    }
+
+    // Novo método que substitui o MongoDB usando o poder do Java 21
+    private String getPayloadForCenario(String cenarioId) {
+        return switch (cenarioId) {
+            case "PROPOSTA_V1_CONSULTA_EXISTENTE" -> """
+                    {
+                      "nPdidoPlatf": 98765,
+                      "cadCli": {
+                    "iScialCli": "CLIENTE DE CONSULTA V1"
+                      },
+                      "status": "APROVADA"
+                    }""";
+            default -> null;
+        };
     }
 }

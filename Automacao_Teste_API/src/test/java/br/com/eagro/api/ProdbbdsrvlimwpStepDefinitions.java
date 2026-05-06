@@ -29,26 +29,27 @@ public class ProdbbdsrvlimwpStepDefinitions {
 
     @Given("que o sistema está configurado para cancelar uma ordem")
     public void que_o_sistema_esta_configurado_para_cancelar_uma_ordem() {
-        String requestBody = "{\n" +
-                "  \"cpssoaJuridContr\": 0,\n" +
-                "  \"ctpoContrNegoc\": 0,\n" +
-                "  \"nseqContrNegoc\": 0,\n" +
-                "  \"ncontrLim\": 0,\n" +
-                "  \"cprodtServcOper\": 0,\n" +
-                "  \"cpssoaCsumr\": 0,\n" +
-                "  \"csitSuborLim\": 0,\n" +
-                "  \"cdoctoCsumr\": 0,\n" +
-                "  \"ccpfCnpjCsumr\": \"YAYHIMRUKCWC80\",\n" +
-                "  \"cflialCpfCnpjC\": \"0001\",\n" +
-                "  \"cctrlCpfCnpjC\": \"01\",\n" +
-                "  \"cdoctoPssoaEmprC\": \"string\",\n" +
-                "  \"vutlzdProdtSubor\": 0,\n" +
-                "  \"cindcdMoedaUtlzd\": 0,\n" +
-                "  \"dthrCriacReg\": \"2025-10-09T17:18:28.985Z\",\n" +
-                "  \"dthrUltAltReg\": \"2025-10-09T17:18:28.985Z\",\n" +
-                "  \"cusuCriacReg\": \"string\",\n" +
-                "  \"cusuUltAltReg\": \"string\"\n" +
-                "}";
+        String requestBody = """
+                {
+                  "cpssoaJuridContr": 0,
+                  "ctpoContrNegoc": 0,
+                  "nseqContrNegoc": 0,
+                  "ncontrLim": 0,
+                  "cprodtServcOper": 0,
+                  "cpssoaCsumr": 0,
+                  "csitSuborLim": 0,
+                  "cdoctoCsumr": 0,
+                  "ccpfCnpjCsumr": "YAYHIMRUKCWC80",
+                  "cflialCpfCnpjC": "0001",
+                  "cctrlCpfCnpjC": "01",
+                  "cdoctoPssoaEmprC": "string",
+                  "vutlzdProdtSubor": 0,
+                  "cindcdMoedaUtlzd": 0,
+                  "dthrCriacReg": "2025-10-09T17:18:28.985Z",
+                  "dthrUltAltReg": "2025-10-09T17:18:28.985Z",
+                  "cusuCriacReg": "string",
+                  "cusuUltAltReg": "string"
+                }""";
 
         String responseBody = "{\"mensagem\":\"Ordem cancelada com sucesso\"}";
 
@@ -79,47 +80,48 @@ public class ProdbbdsrvlimwpStepDefinitions {
 
     @Given("que o sistema está configurado para criar uma ordem")
     public void que_o_sistema_esta_configurado_para_criar_uma_ordem() {
-        String requestBody = "{\n" +
-                "  \"ccsist\": \"AGRO\",\n" +
-                "  \"cpssoaJuridSensi\": 0,\n" +
-                "  \"ctpoContrSensi\": 0,\n" +
-                "  \"nseqContrSensi\": 0,\n" +
-                "  \"cpssoaJuridContr\": 0,\n" +
-                "  \"ctpoContrNegoc\": 0,\n" +
-                "  \"nseqContrNegoc\": 0,\n" +
-                "  \"ncontrLimProdt\": 0,\n" +
-                "  \"cprodtServcOper\": 0,\n" +
-                "  \"cpssoa\": 0,\n" +
-                "  \"ccatlgGarnt\": 0,\n" +
-                "  \"ctpoCoobcProdt\": 0,\n" +
-                "  \"ctpoRecProdt\": 0,\n" +
-                "  \"cutilzSpreadTx\": 0,\n" +
-                "  \"cpssoaCsumr\": 0,\n" +
-                "  \"ctpoPssoaCsumr\": \"string\",\n" +
-                "  \"cdoctoCsumrLim\": 0,\n" +
-                "  \"ccpfCnpjCsumrLim\": \"41564768971006\",\n" +
-                "  \"cflialCpfCnpjCsu\": \"0001\",\n" +
-                "  \"cctrlCpfCnpjCsum\": \"01\",\n" +
-                "  \"cdoctoPssoaEmprC\": \"string\",\n" +
-                "  \"pspreadProdt\": 0,\n" +
-                "  \"cindcdUndSpread\": 0,\n" +
-                "  \"cundOrgnz\": 0,\n" +
-                "  \"cpssoaJuridOrgnz\": 0,\n" +
-                "  \"qtdAvalista\": 0,\n" +
-                "  \"grupoAvalista\": [\n" +
-                "    {\n" +
-                "      \"cdoctoAvals\": 0,\n" +
-                "      \"ccpfCnpjAval\": \"41564768971006\",\n" +
-                "      \"cflialCpfCnpjAva\": \"0001\",\n" +
-                "      \"cctrlCpfCnpjAval\": \"01\",\n" +
-                "      \"cdoctoPssoaEmprA\": \"string\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"dthrCriacReg\": \"2025-10-09T17:15:59.351Z\",\n" +
-                "  \"dthrUltAltReg\": \"2025-10-09T17:15:59.351Z\",\n" +
-                "  \"cusuCriacReg\": \"string\",\n" +
-                "  \"cusuUltAltReg\": \"string\"\n" +
-                "}";
+        String requestBody = """
+                {
+                  "ccsist": "AGRO",
+                  "cpssoaJuridSensi": 0,
+                  "ctpoContrSensi": 0,
+                  "nseqContrSensi": 0,
+                  "cpssoaJuridContr": 0,
+                  "ctpoContrNegoc": 0,
+                  "nseqContrNegoc": 0,
+                  "ncontrLimProdt": 0,
+                  "cprodtServcOper": 0,
+                  "cpssoa": 0,
+                  "ccatlgGarnt": 0,
+                  "ctpoCoobcProdt": 0,
+                  "ctpoRecProdt": 0,
+                  "cutilzSpreadTx": 0,
+                  "cpssoaCsumr": 0,
+                  "ctpoPssoaCsumr": "string",
+                  "cdoctoCsumrLim": 0,
+                  "ccpfCnpjCsumrLim": "41564768971006",
+                  "cflialCpfCnpjCsu": "0001",
+                  "cctrlCpfCnpjCsum": "01",
+                  "cdoctoPssoaEmprC": "string",
+                  "pspreadProdt": 0,
+                  "cindcdUndSpread": 0,
+                  "cundOrgnz": 0,
+                  "cpssoaJuridOrgnz": 0,
+                  "qtdAvalista": 0,
+                  "grupoAvalista": [
+                    {
+                      "cdoctoAvals": 0,
+                      "ccpfCnpjAval": "41564768971006",
+                      "cflialCpfCnpjAva": "0001",
+                      "cctrlCpfCnpjAval": "01",
+                      "cdoctoPssoaEmprA": "string"
+                    }
+                  ],
+                  "dthrCriacReg": "2025-10-09T17:15:59.351Z",
+                  "dthrUltAltReg": "2025-10-09T17:15:59.351Z",
+                  "cusuCriacReg": "string",
+                  "cusuUltAltReg": "string"
+                }""";
 
         String responseBody = "{\"mensagem\":\"Ordem criada com sucesso\"}";
 
@@ -139,22 +141,23 @@ public class ProdbbdsrvlimwpStepDefinitions {
 
     @Given("que o sistema está configurado para cancelar uma ordem V1")
     public void que_o_sistema_esta_configurado_para_cancelar_uma_ordem_v1() {
-        String requestBody = "{\n" +
-                "  \"cpssoaJuridContr\": 0,\n" +
-                "  \"ctpoContrNegoc\": 0,\n" +
-                "  \"nseqContrNegoc\": 0,\n" +
-                "  \"ncontrLim\": 0,\n" +
-                "  \"cprodtServcOper\": 0,\n" +
-                "  \"cpssoaCsumr\": 0,\n" +
-                "  \"csitSuborLim\": 0,\n" +
-                "  \"cdoctoCsumr\": 0,\n" +
-                "  \"ccpfCnpjCsumr\": 0,\n" +
-                "  \"cflialCpfCnpjC\": 0,\n" +
-                "  \"cctrlCpfCnpjC\": 0,\n" +
-                "  \"cdoctoPssoaEmprC\": \"string\",\n" +
-                "  \"vutlzdProdtSubor\": 0,\n" +
-                "  \"cindcdMoedaUtlzd\": 0\n" +
-                "}";
+        String requestBody = """
+                {
+                  "cpssoaJuridContr": 0,
+                  "ctpoContrNegoc": 0,
+                  "nseqContrNegoc": 0,
+                  "ncontrLim": 0,
+                  "cprodtServcOper": 0,
+                  "cpssoaCsumr": 0,
+                  "csitSuborLim": 0,
+                  "cdoctoCsumr": 0,
+                  "ccpfCnpjCsumr": 0,
+                  "cflialCpfCnpjC": 0,
+                  "cctrlCpfCnpjC": 0,
+                  "cdoctoPssoaEmprC": "string",
+                  "vutlzdProdtSubor": 0,
+                  "cindcdMoedaUtlzd": 0
+                }""";
 
         String responseBody = "{\"mensagem\":\"Ordem V1 cancelada com sucesso\"}";
 

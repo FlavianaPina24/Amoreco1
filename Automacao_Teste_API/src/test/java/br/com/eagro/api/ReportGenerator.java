@@ -13,17 +13,12 @@ public class ReportGenerator {
 
     public static void generateReport() {
         String projectPath = System.getProperty("user.dir");
-        File reportOutputDirectory = new File(projectPath, "target/cucumber-reports");
-
-        if (!reportOutputDirectory.exists()) {
-            System.out.println("\n>>> A pasta de relatórios JSON não foi criada. O DASHBOARD NÃO SERÁ GERADO. <<<");
-            return;
-        }
-
-        File jsonFile = new File(reportOutputDirectory, "cucumber.json");
+        
+        // Lê exatamente do caminho relativo onde o Executor mandou o Cucumber salvar
+        File jsonFile = new File(projectPath, "target/cucumber.json");
 
         if (!jsonFile.exists() || jsonFile.length() == 0) {
-            System.out.println("\n>>> ARQUIVO 'cucumber.json' NÃO ENCONTRADO OU VAZIO. O DASHBOARD NÃO SERÁ GERADO. <<<");
+            System.out.println("\n>>> ARQUIVO JSON NÃO ENCONTRADO EM: " + jsonFile.getAbsolutePath() + " <<<");
             return;
         }
 

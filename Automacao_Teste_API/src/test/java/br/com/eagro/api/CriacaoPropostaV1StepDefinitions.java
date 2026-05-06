@@ -30,11 +30,10 @@ public class CriacaoPropostaV1StepDefinitions {
 
     @When("uma requisição {string} é enviada para o endpoint {string} com a chave de cenário {string}")
     public void uma_requisicao_e_enviada_para_o_endpoint_com_a_chave_de_cenario(String metodo, String endpoint, String chaveCenario) throws IOException {
-        String collectionName = (String) testContext.get("collectionName");
-        String dadosBase = MongoConnection.getCenarioBody(chaveCenario, collectionName);
+        String dadosBase = getPayloadForCenario(chaveCenario);
 
         if (dadosBase == null) {
-            throw new RuntimeException("Cenário '" + chaveCenario + "' não encontrado na coleção '" + collectionName + "'");
+            throw new RuntimeException("Cenário '" + chaveCenario + "' não encontrado nos Text Blocks.");
         }
 
         // Anexa o corpo da requisição ao relatório
@@ -87,5 +86,27 @@ public class CriacaoPropostaV1StepDefinitions {
         Response response = request.when().post(endpoint);
 
         testContext.setResponse(response);
+    }
+
+    // Novo método que substitui o MongoDB usando o poder do Java 21
+    private String getPayloadForCenario(String cenarioId) {
+        return switch (cenarioId) {
+            case "PROPOSTA_V1_CRIACAO_VALIDA" -> """
+                    {
+                      "nPdidoPlatf": 54321,
+                      "numeroCPFCNPJ": "63809121185"
+                    }""";
+            case "PROPOSTA_V1_CPF_CURTO" -> """
+                    {
+                      "nPdidoPlatf": 54322,
+                      "numeroCPFCNPJ": "12345678"
+                    }""";
+            case "PROPOSTA_V1_CNPJ_ESPECIAL" -> """
+                    {
+                      "nPdidoPlatf": 54323,
+                      "numeroCPFCNPJ": "12.345.678/0001-9@"
+                    }""";
+            default -> null;
+        };
     }
 }

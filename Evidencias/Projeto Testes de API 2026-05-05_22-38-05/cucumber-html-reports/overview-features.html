@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 2026-05-05_22-38-05) - Features Overview</title>
+
+
+  <script>
+$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                266,
+                0,
+                0,
+                0,
+                0
+            ],
+            backgroundColor: [
+                "#00B000",
+                "#FF3030",
+                "#88AAFF",
+                "#F5F28F",
+                "#F5B975"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed",
+            "Skipped",
+            "Pending",
+            "Undefined"
+        ]
+    };
+
+    var context = document.getElementById("steps-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Steps"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 266) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                79,
+                0
+            ],
+            backgroundColor: [
+                "#00B000",
+                "#FF3030"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed"
+        ]
+    };
+
+    var context = document.getElementById("scenarios-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Scenarios"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 79) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                   18,
+                   0
+               ],
+               backgroundColor: [
+                "#00B000",
+                "#FF3030"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed"
+        ]
+    };
+
+    var context = document.getElementById("features-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Features"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 18) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});  </script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation"  class="active" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>Projeto Testes de API</td>
+        <td>2026-05-05_22-38-05</td>
+      <td>05 mai. 2026, 22:38</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+
+<table class="table table-bordered" id="classifications">
+  <tbody>
+      <tr class="info">
+        <th>Plataforma</th>
+        <td>Windows 11</td>
+      </tr>
+      <tr class="info">
+        <th>Executor</th>
+        <td>Flaviana Pina</td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Features Statistics</h2>
+      <p>The following graphs show passing and failing statistics for features</p>
+  </div>
+</div>
+
+
+  <div class="container-fluid" id="charts">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div id="featureChartCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#featureChartCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="1"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <canvas id="features-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="scenarios-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="steps-chart" height="120"></canvas>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#featureChartCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#featureChartCarousel" role="button" data-slide="next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+<table id="tablesorter" class="stats-table table-hover">
+
+<thead>
+  <tr class="header dont-sort">
+      <th></th>
+    <th colspan="6">Steps</th>
+    <th colspan="3">Scenarios</th>
+    <th colspan="2">Features</th>
+  </tr>
+  <tr>
+    <th>Feature</th>
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="skipped">Skipped</th>
+    <th class="pending">Pending</th>
+    <th class="undefined">Undefined</th>
+    <th class="total">Total</th>
+
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="total">Total</th>
+
+    <th>Duration</th>
+    <th>Status</th>
+  </tr>
+</thead>
+
+
+  <tbody>
+      <tr>
+        <td class="tagname"><a href="report-feature_2855742443.html">API Externa - Testes de Contrato (JSONPlaceholder)</a></td>
+
+        <td      class="passed"    >29</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">29</td>
+
+        <td  class="passed"    >8</td>
+        <td >0</td>
+        <td class="total">8</td>
+
+        <td class="duration" data-value="5153508700">5.153</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_1_2387057960.html">API de Proposta V1 - Testes de Consulta</a></td>
+
+        <td      class="passed"    >4</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="725959000">0.725</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_2_889248259.html">API de Proposta V1 - Testes de Cria&ccedil;&atilde;o</a></td>
+
+        <td      class="passed"    >12</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">12</td>
+
+        <td  class="passed"    >3</td>
+        <td >0</td>
+        <td class="total">3</td>
+
+        <td class="duration" data-value="133290400">0.133</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_3_2224697143.html">API de Valida&ccedil;&atilde;o de Documentos</a></td>
+
+        <td      class="passed"    >40</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">40</td>
+
+        <td  class="passed"    >10</td>
+        <td >0</td>
+        <td class="total">10</td>
+
+        <td class="duration" data-value="447594100">0.447</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_4_2367781846.html">Fluxos de Neg&oacute;cio Legados</a></td>
+
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">0</td>
+
+        <td  class="passed"    >9</td>
+        <td >0</td>
+        <td class="total">9</td>
+
+        <td class="duration" data-value="0">0.000</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_5_3651476939.html">API de Orquestra&ccedil;&atilde;o de Revis&atilde;o de Ordens V1</a></td>
+
+        <td      class="passed"    >16</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">16</td>
+
+        <td  class="passed"    >4</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td class="duration" data-value="161261400">0.161</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_6_1844022476.html">API de Orquestra&ccedil;&atilde;o de Revis&atilde;o de Ordens V2</a></td>
+
+        <td      class="passed"    >4</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="36438300">0.036</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_7_3220952457.html">API de Controle de Tarefas de Ordens V1</a></td>
+
+        <td      class="passed"    >4</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="41257000">0.041</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_8_1870739481.html">API de Timeline de Ordens</a></td>
+
+        <td      class="passed"    >8</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">8</td>
+
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+
+        <td class="duration" data-value="95505200">0.095</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_9_2848946996.html">API de Orquestra&ccedil;&atilde;o de Timeline de Ordens V1</a></td>
+
+        <td      class="passed"    >16</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">16</td>
+
+        <td  class="passed"    >4</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td class="duration" data-value="143058600">0.143</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_10_3685975017.html">prodbbdsrvlimwp</a></td>
+
+        <td      class="passed"    >20</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">20</td>
+
+        <td  class="passed"    >5</td>
+        <td >0</td>
+        <td class="total">5</td>
+
+        <td class="duration" data-value="166580900">0.166</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_11_205987781.html">API de Simula&ccedil;&atilde;o de Produtos</a></td>
+
+        <td      class="passed"    >15</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">15</td>
+
+        <td  class="passed"    >4</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td class="duration" data-value="228367800">0.228</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_12_750397408.html">API de Simula&ccedil;&atilde;o de Produtos V1</a></td>
+
+        <td      class="passed"    >3</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="24270000">0.024</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_13_2830144312.html">API de Proposta - Tombamento</a></td>
+
+        <td      class="passed"    >6</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">6</td>
+
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+
+        <td class="duration" data-value="29499800">0.029</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_14_172273706.html">API de Orquestra&ccedil;&atilde;o de Recontrata&ccedil;&atilde;o e Formaliza&ccedil;&atilde;o</a></td>
+
+        <td      class="passed"    >35</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">35</td>
+
+        <td  class="passed"    >9</td>
+        <td >0</td>
+        <td class="total">9</td>
+
+        <td class="duration" data-value="293113100">0.293</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_15_2710909701.html">API de Recontrata&ccedil;&atilde;o e Formaliza&ccedil;&atilde;o V1</a></td>
+
+        <td      class="passed"    >4</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="31732700">0.031</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_16_2051934234.html">API de Orquestra&ccedil;&atilde;o de Dados de Especialistas V1</a></td>
+
+        <td      class="passed"    >17</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">17</td>
+
+        <td  class="passed"    >5</td>
+        <td >0</td>
+        <td class="total">5</td>
+
+        <td class="duration" data-value="81008200">0.081</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_17_1477841877.html">API de Orquestra&ccedil;&atilde;o de Delega&ccedil;&atilde;o de Usu&aacute;rios V1</a></td>
+
+        <td      class="passed"    >33</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">33</td>
+
+        <td  class="passed"    >9</td>
+        <td >0</td>
+        <td class="total">9</td>
+
+        <td class="duration" data-value="282865100">0.282</td>
+        <td class="passed">Passed</td>
+      </tr>
+  </tbody>
+
+  <tfoot class="total">
+    <tr>
+      <td></td>
+      <td>266</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>266</td>
+
+      <td>79</td>
+      <td>0</td>
+      <td>79</td>
+
+      <td class="duration">8.075</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>100.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td>100.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td></td>
+      <td>100.00%</td>
+    </tr>
+  </tfoot>
+</table>
+
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

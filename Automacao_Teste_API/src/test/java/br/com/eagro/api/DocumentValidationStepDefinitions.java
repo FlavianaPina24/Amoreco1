@@ -25,7 +25,7 @@ public class DocumentValidationStepDefinitions {
 
     @Given("um documento do cenário {string} a ser validado")
     public void um_documento_do_cenario_a_ser_validado(String cenarioId) {
-        String body = MongoConnection.getCenarioBody(cenarioId, "cenarios");
+        String body = getPayloadForCenario(cenarioId);
         testContext.set("documentoBody", body);
         testContext.set("cenarioId", cenarioId);
     }
@@ -34,6 +34,11 @@ public class DocumentValidationStepDefinitions {
     public void a_validation_post_request_is_sent_to(String metodo, String endpoint) throws IOException {
         String body = (String) testContext.get("documentoBody");
         String cenarioId = (String) testContext.get("cenarioId");
+
+        // Proteção contra NullPointerException caso a massa de dados não seja encontrada
+        if (body == null) {
+            throw new IllegalStateException("ERRO: Massa de dados vazia para o cenário '" + cenarioId + "'. Verifique os Text Blocks.");
+        }
 
         // Anexa o corpo da requisição ao relatório
         testContext.getScenario().attach(body, "application/json", "Request Body");
@@ -98,5 +103,48 @@ public class DocumentValidationStepDefinitions {
     @Then("o corpo da resposta da validação deve ter a mensagem {string}")
     public void the_validation_response_body_should_have_the_message(String message) {
         testContext.getResponse().then().body("mensagem", containsString(message));
+    }
+
+    // Novo método que substitui o MongoDB usando o poder do Java 21
+    private String getPayloadForCenario(String cenarioId) {
+        return switch (cenarioId) {
+            case "VALIDACAO_CNPJ_ALFA_VALIDO", "VALIDACAO_CNPJ_ALFA_DV_VALIDO" -> """
+                    {
+                      "documento": "12ABC678000190"
+                    }""";
+            case "VALIDACAO_CPF_VALIDO" -> """
+                    {
+                      "documento": "12345678909"
+                    }""";
+            case "VALIDACAO_CNPJ_CURTO" -> """
+                    {
+                      "documento": "12345678000"
+                    }""";
+            case "VALIDACAO_CNPJ_LONGO" -> """
+                    {
+                      "documento": "12345678000190123"
+                    }""";
+            case "VALIDACAO_CPF_CURTO" -> """
+                    {
+                      "documento": "12345678"
+                    }""";
+            case "VALIDACAO_CPF_LONGO" -> """
+                    {
+                      "documento": "1234567890123"
+                    }""";
+            case "VALIDACAO_CNPJ_COM_ESPECIAIS" -> """
+                    {
+                      "documento": "12.345.678/0001-9@"
+                    }""";
+            case "VALIDACAO_CPF_COM_ESPECIAIS" -> """
+                    {
+                      "documento": "123.456.789-0@"
+                    }""";
+            case "VALIDACAO_CNPJ_ALFA_DV_INVALIDO" -> """
+                    {
+                      "documento": "12ABC678000199"
+                    }""";
+            default -> null;
+        };
     }
 }

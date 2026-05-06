@@ -1,0 +1,16 @@
+{
+  "cpssoaJuridContr": 0,
+  "ctpoContrNegoc": 0,
+  "nseqContrNegoc": 0,
+  "ncontrLim": 0,
+  "cprodtServcOper": 0,
+  "cpssoaCsumr": 0,
+  "csitSuborLim": 0,
+  "cdoctoCsumr": 0,
+  "ccpfCnpjCsumr": 0,
+  "cflialCpfCnpjC": 0,
+  "cctrlCpfCnpjC": 0,
+  "cdoctoPssoaEmprC": "string",
+  "vutlzdProdtSubor": 0,
+  "cindcdMoedaUtlzd": 0
+}

@@ -1,0 +1,41 @@
+{
+  "ccsist": "AGRO",
+  "cpssoaJuridSensi": 0,
+  "ctpoContrSensi": 0,
+  "nseqContrSensi": 0,
+  "cpssoaJuridContr": 0,
+  "ctpoContrNegoc": 0,
+  "nseqContrNegoc": 0,
+  "ncontrLimProdt": 0,
+  "cprodtServcOper": 0,
+  "cpssoa": 0,
+  "ccatlgGarnt": 0,
+  "ctpoCoobcProdt": 0,
+  "ctpoRecProdt": 0,
+  "cutilzSpreadTx": 0,
+  "cpssoaCsumr": 0,
+  "ctpoPssoaCsumr": "string",
+  "cdoctoCsumrLim": 0,
+  "ccpfCnpjCsumrLim": "41564768971006",
+  "cflialCpfCnpjCsu": "0001",
+  "cctrlCpfCnpjCsum": "01",
+  "cdoctoPssoaEmprC": "string",
+  "pspreadProdt": 0,
+  "cindcdUndSpread": 0,
+  "cundOrgnz": 0,
+  "cpssoaJuridOrgnz": 0,
+  "qtdAvalista": 0,
+  "grupoAvalista": [
+    {
+      "cdoctoAvals": 0,
+      "ccpfCnpjAval": "41564768971006",
+      "cflialCpfCnpjAva": "0001",
+      "cctrlCpfCnpjAval": "01",
+      "cdoctoPssoaEmprA": "string"
+    }
+  ],
+  "dthrCriacReg": "2025-10-09T17:15:59.351Z",
+  "dthrUltAltReg": "2025-10-09T17:15:59.351Z",
+  "cusuCriacReg": "string",
+  "cusuUltAltReg": "string"
+}

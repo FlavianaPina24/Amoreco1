@@ -29,14 +29,15 @@ public class ProdutosSimulationStepDefinitions {
 
     @Given("que o sistema está configurado para gravar uma simulação")
     public void que_o_sistema_esta_configurado_para_gravar_uma_simulacao() {
-        String requestBody = "{\n" +
-                "  \"codigoInstituicaoFinanceira\": 237,\n" +
-                "  \"modalidadeCredito\": \"RURA\",\n" +
-                "  \"codigoModalidadeCredito\": \"1019\",\n" +
-                "  \"numeroCPFCNPJ\": \"63809121185\",\n" +
-                "  \"numeroSimulacao\": 25413251,\n" +
-                "  \"valorLimite\": 2409599.11\n" +
-                "}"; // Body simplificado para o teste
+        String requestBody = """
+                {
+                  "codigoInstituicaoFinanceira": 237,
+                  "modalidadeCredito": "RURA",
+                  "codigoModalidadeCredito": "1019",
+                  "numeroCPFCNPJ": "63809121185",
+                  "numeroSimulacao": 25413251,
+                  "valorLimite": 2409599.11
+                }"""; // Body simplificado para o teste
 
         String responseBody = "{\"mensagem\":\"Simulação gravada com sucesso\"}";
 
@@ -67,10 +68,11 @@ public class ProdutosSimulationStepDefinitions {
 
     @Given("que o sistema está configurado para atualizar a simulação com ID {string}")
     public void que_o_sistema_esta_configurado_para_atualizar_a_simulacao_com_id(String id) {
-        String requestBody = "{\n" +
-                "  \"id\": \"68f8e22fd681f409c94e671a\",\n" +
-                "  \"numeroSimulacao\": " + id + "\n" +
-                "}"; // Body simplificado
+        String requestBody = """
+                {
+                  "id": "68f8e22fd681f409c94e671a",
+                  "numeroSimulacao": %s
+                }""".formatted(id); // Body simplificado
 
         String responseBody = "{\"mensagem\":\"Simulação atualizada com sucesso\"}";
 
